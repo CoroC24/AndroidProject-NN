@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">NoNequi</string>
+    <string name="nameIcon">NoNequi</string>
+    <string name="welcomeText">¡Welcome to NoNequi!</string>
+    <string name="subtitle">The best transfer application</string>
+    <string name="buttonLogin">SIGN IN</string>
+    <string name="buttonRegister">SIGN UP</string>
+    <string name="signUpTitle">SIGN UP</string>
+    <string name="signInTitle">SIGN IN </string>
+    <string name="textSignIn">Enter your Email and Password</string>
+    <string name="textSignUp">Enter your Credentials</string>
+    <string name="rememberPass">Remember Password</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>

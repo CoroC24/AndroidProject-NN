@@ -14,11 +14,6 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="ThemeOverlay.NoNequi.FullscreenContainer" parent="">
-        <item name="fullscreenBackgroundColor">@color/light_blue_900</item>
-        <item name="fullscreenTextColor">@color/light_blue_A400</item>
-    </style>
-
     <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/backgroundColorDark</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/logo_nightmode_splash</item>

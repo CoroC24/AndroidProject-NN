@@ -4,7 +4,7 @@
     <string name="welcomeText">¡Welcome to NoNequi!</string>
     <string name="subtitle">The best transfer application</string>
     <string name="buttonLogin">SIGN IN</string>
-    <string name="buttonRegister">SIGN UP</string>
+    <string name="signUpButton">SIGN UP</string>
     <string name="signUpTitle">SIGN UP</string>
     <string name="signInTitle">SIGN IN </string>
     <string name="textSignIn">Enter your Email and Password</string>

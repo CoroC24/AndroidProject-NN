@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="107dp"
-        android:layout_height="76dp"
+        android:layout_width="124dp"
+        android:layout_height="104dp"
         android:layout_marginTop="36dp"
         android:src="@mipmap/logo_nightmode"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,17 +51,18 @@
         android:id="@+id/subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="484dp"
+        android:layout_marginBottom="460dp"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/subtitle"
         android:textColor="#B8B8B8"
         android:textSize="15sp"
-        android:fontFamily="sans-serif-medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/signInButton"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginBottom="16dp"
@@ -79,7 +80,7 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginBottom="136dp"
-        android:text="@string/buttonRegister"
+        android:text="@string/signUpButton"
         android:background="@drawable/style_button"
         android:textColor="@color/white"
         android:onClick="signUp"

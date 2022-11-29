@@ -24,23 +24,23 @@ public class Login extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             getSplashScreen().setOnExitAnimationListener(splashScreenView -> {
-                final ObjectAnimator slideUp = ObjectAnimator.ofFloat(
+                final ObjectAnimator slideLeft = ObjectAnimator.ofFloat(
                         splashScreenView,
-                        View.TRANSLATION_Y,
+                        View.TRANSLATION_X,
                         0f,
-                        -splashScreenView.getHeight()
+                        -splashScreenView.getWidth()
                 );
-                slideUp.setInterpolator(new AnticipateInterpolator());
-                slideUp.setDuration(350L);
+                slideLeft.setInterpolator(new AnticipateInterpolator());
+                slideLeft.setDuration(350L);
 
-                slideUp.addListener(new AnimatorListenerAdapter() {
+                slideLeft.addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         splashScreenView.remove();
                     }
                 });
 
-                slideUp.start();
+                slideLeft.start();
             });
         }
 

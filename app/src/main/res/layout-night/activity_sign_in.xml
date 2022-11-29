@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/signInButton"
+        android:id="@+id/signUpButton"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginBottom="92dp"
@@ -54,7 +54,6 @@
         android:layout_height="wrap_content"
         android:hint="Password"
         android:paddingHorizontal="20dp"
-        android:paddingBottom="10dp"
         android:textColorHint="#B8B8B8"
         app:errorEnabled="true"
         app:errorIconDrawable="@null"
@@ -93,9 +92,8 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Email"
+        android:hint="Username"
         android:paddingHorizontal="20dp"
-        android:paddingBottom="10dp"
         android:textColorHint="#B8B8B8"
         app:errorEnabled="true"
         app:errorIconDrawable="@null"
@@ -103,7 +101,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subtitle"
-        app:startIconDrawable="@drawable/ic_baseline_email_24">
+        app:startIconDrawable="@drawable/ic_baseline_person_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -138,7 +136,7 @@
         android:text="@string/rememberPass"
         android:textColor="#B8B8B8"
         android:textColorLink="@color/primary"
-        app:layout_constraintBottom_toTopOf="@+id/signInButton"
+        app:layout_constraintBottom_toTopOf="@+id/signUpButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/InputPassword" />
 

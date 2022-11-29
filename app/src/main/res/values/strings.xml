@@ -7,7 +7,7 @@
     <string name="signUpButton">SIGN UP</string>
     <string name="signUpTitle">SIGN UP</string>
     <string name="signInTitle">SIGN IN </string>
-    <string name="textSignIn">Enter your Email and Password</string>
+    <string name="textSignIn">Enter your Username and Password</string>
     <string name="textSignUp">Enter your Credentials</string>
     <string name="rememberPass">Remember Password</string>
     <string name="title_activity_splash_screen">SplashScreen</string>

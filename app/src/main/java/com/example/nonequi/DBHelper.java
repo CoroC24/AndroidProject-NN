@@ -1,6 +1,8 @@
 package com.example.nonequi;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -22,5 +24,35 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("drop table if exists users");
+    }
+
+    public boolean insertData(String username, String password, String email) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("username", username);
+        values.put("password", password);
+        values.put("email", email);
+
+        long result = db.insert("users", null, values);
+        if(result == -1) return false;
+        else return true;
+    }
+
+    public boolean checkUsername(String username) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM users where username = ?", new String[]{username});
+
+        if(cursor.getCount() > 0) return true;
+        else return false;
+
+    }
+
+    public boolean checkUserPassword(String username, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM users where username = ? and password = ? ", new String[]{username, password});
+
+        if(cursor.getCount() > 0) return true;
+        else return false;
     }
 }

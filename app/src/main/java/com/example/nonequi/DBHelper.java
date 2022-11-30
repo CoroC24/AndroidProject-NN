@@ -39,9 +39,9 @@ public class DBHelper extends SQLiteOpenHelper {
         else return true;
     }
 
-    public boolean checkIfExists(String email) {
+    public boolean checkIfExists(String username, String email) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM users where username = ?", new String[]{email});
+        Cursor cursor = db.rawQuery("SELECT * FROM users where username = ? and email = ?", new String[]{username, email});
 
         if(cursor.getCount() > 0) return true;
         else return false;

@@ -7,18 +7,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.nonequi.databinding.ActivitySignUpBinding;
-
-import java.util.ArrayList;
 import java.util.regex.Pattern;
-
+import com.example.nonequi.databinding.ActivitySignUpBinding;
 
 public class signUp extends AppCompatActivity {
 
     private ActivitySignUpBinding binding;
     private EditText username, password, rpassword, email;
+    private TextView clickableText;
 
     DBHelper DB;
 
@@ -37,7 +35,17 @@ public class signUp extends AppCompatActivity {
 
         DB = new DBHelper(this);
 
-        binding.signUpButton.setOnClickListener(new View.OnClickListener() {
+        clickableText = findViewById(R.id.signInClickableText);
+
+        clickableText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SignIn.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.signInButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -46,9 +54,9 @@ public class signUp extends AppCompatActivity {
                 String rpass = rpassword.getText().toString();
                 String mail = email.getText().toString();
 
-                if(emailCorrect() || passCorrect() || rPassCorrect() || userCorrect()) {
+                if(emailCorrect() == true && passCorrect() == true && rPassCorrect() == true && userCorrect() == true) {
                     if(pass.equals(rpass)) {
-                        Boolean checkExists = DB.checkIfExists(mail);
+                        Boolean checkExists = DB.checkIfExists(user, mail);
 
                         if(checkExists == true) {
                             Toast.makeText(signUp.this, "This user already registered", Toast.LENGTH_SHORT).show();
@@ -57,6 +65,10 @@ public class signUp extends AppCompatActivity {
 
                             if(insert == true) {
                                 Toast.makeText(signUp.this, "Register successfully", Toast.LENGTH_SHORT).show();
+                                username.setText("");
+                                password.setText("");
+                                rpassword.setText("");
+                                email.setText("");
                                 Intent intent = new Intent(getApplicationContext(), SignIn.class);
                                 startActivity(intent);
 
@@ -64,6 +76,10 @@ public class signUp extends AppCompatActivity {
                                 Toast.makeText(signUp.this, "Register failed", Toast.LENGTH_SHORT).show();
                             }
                         }
+                    } else {
+                        Toast.makeText(signUp.this, "Passwords must be the same in all fields.", Toast.LENGTH_SHORT).show();
+                        rpassword.setText("");
+                        binding.InputRPasswordSP.setError("Incorrect password");
                     }
                 }
             }
@@ -123,13 +139,4 @@ public class signUp extends AppCompatActivity {
             return true;
         }
     }
-
-    /*public boolean validate() {
-        ArrayList<Boolean> result = new ArrayList<>();
-        result.add(emailCorrect());
-        result.add(userCorrect());
-        result.add(passCorrect());
-        result.add(rPassCorrect());
-        return true;
-    }*/
 }

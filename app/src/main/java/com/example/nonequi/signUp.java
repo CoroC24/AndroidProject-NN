@@ -61,11 +61,6 @@ public class signUp extends AppCompatActivity {
                     if(pass.equals(rpass)) {
                         Boolean insert = DB.insertData(user, pass, mail);
 
-                        binding.InputEmailSP.setError(null);
-                        binding.InputUserNameSP.setError(null);
-                        binding.InputPasswordSP.setError(null);
-                        binding.InputRPasswordSP.setError(null);
-
                         if(insert == true) {
                             Toast.makeText(signUp.this, "Register successfully", Toast.LENGTH_SHORT).show();
                             username.setText("");
@@ -147,6 +142,7 @@ public class signUp extends AppCompatActivity {
             return false;
 
         } else {
+            binding.InputUserNameSP.setError(null);
             return true;
         }
     }
@@ -158,11 +154,12 @@ public class signUp extends AppCompatActivity {
             binding.InputRPasswordSP.setError("Field cannot be empty");
             return false;
         } else {
+            binding.InputRPasswordSP.setError(null);
             return true;
         }
     }
 
-    private final boolean validateData() {
+    private boolean validateData() {
         Boolean[] result = new Boolean[] {this.emailCorrect(), this.passCorrect(), this.userCorrect(), this.rPassCorrect()};
 
         return !ArraysKt.contains(result, false);

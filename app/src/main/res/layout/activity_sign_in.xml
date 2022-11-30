@@ -62,7 +62,7 @@
         app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="352dp"
+            android:layout_width="369dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="108dp"
             android:inputType="textPassword"
@@ -100,7 +100,7 @@
         app:startIconDrawable="@drawable/ic_baseline_person_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="351dp"
+            android:layout_width="370dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:inputType="textEmailAddress"

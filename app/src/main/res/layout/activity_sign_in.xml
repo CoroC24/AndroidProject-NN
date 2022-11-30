@@ -62,7 +62,7 @@
         app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="370dp"
+            android:layout_width="352dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="108dp"
             android:inputType="textPassword"
@@ -100,7 +100,7 @@
         app:startIconDrawable="@drawable/ic_baseline_person_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+            android:layout_width="351dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:inputType="textEmailAddress"
@@ -113,14 +113,15 @@
         android:id="@+id/appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/techno_hideo"
         android:text="@string/nameIcon"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@+id/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <TextView
@@ -132,6 +133,7 @@
         android:text="@string/dontHaveAccount"
         android:textColor="#B8B8B8"
         app:layout_constraintEnd_toStartOf="@+id/signUpClickableText"
+        app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/InputPassword" />
 

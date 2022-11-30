@@ -110,7 +110,8 @@
         android:textColor="@color/white"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/titleText"
-        app:layout_constraintStart_toStartOf="@+id/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -184,7 +185,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/haveAccount"
         android:textColor="#B8B8B8"
         app:layout_constraintEnd_toStartOf="@+id/signInClickableText"

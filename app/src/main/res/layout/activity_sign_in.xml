@@ -22,13 +22,14 @@
         android:id="@+id/signInButton"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/style_button_fill"
         android:text="@string/buttonLogin"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUpClickableText" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/subtitle"
@@ -48,23 +49,23 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:hint="Password"
+        android:hint="@string/password"
         android:paddingHorizontal="20dp"
         android:textColorHint="#B8B8B8"
         app:endIconMode="password_toggle"
         app:errorEnabled="true"
         app:errorIconDrawable="@null"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/InputUsername"
         app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="370dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="108dp"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             app:layout_constraintTop_toBottomOf="@+id/subtitle"
             tools:layout_editor_absoluteX="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -83,20 +84,19 @@
         app:layout_constraintTop_toBottomOf="@+id/appName" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/InputEmail"
+        android:id="@+id/InputUsername"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="97dp"
-        android:layout_marginBottom="98dp"
-        android:hint="Username"
+        android:layout_marginTop="32dp"
+        android:hint="@string/username"
         android:paddingHorizontal="20dp"
         android:textColorHint="#B8B8B8"
         app:errorEnabled="true"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleText"
+        app:layout_constraintTop_toBottomOf="@+id/subtitle"
         app:startIconDrawable="@drawable/ic_baseline_person_24">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -127,18 +127,19 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="188dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginEnd="14dp"
         android:text="@string/dontHaveAccount"
         android:textColor="#B8B8B8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/signUpClickableText" />
+        app:layout_constraintEnd_toStartOf="@+id/signUpClickableText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/InputPassword" />
 
     <TextView
         android:id="@+id/signUpClickableText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="28dp"
         android:clickable="true"
         android:focusable="true"
         android:minHeight="48dp"

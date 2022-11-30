@@ -15,4 +15,8 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="dontHaveAccount">Do not have an account?</string>
     <string name="haveAccount">Already have an account?</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="repeat_password">Repeat Password</string>
 </resources>

@@ -19,5 +19,6 @@
         <item name="windowSplashScreenAnimatedIcon">@drawable/logo_splash_nightmode</item>
         <item name="windowSplashScreenAnimationDuration">200</item>
         <item name="postSplashScreenTheme">@style/Theme.NoNequi</item>
+        <item name="android:windowSplashScreenBrandingImage" tools:targetApi="s">@drawable/branded_image_night</item>
     </style>
 </resources>

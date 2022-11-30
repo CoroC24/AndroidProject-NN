@@ -14,7 +14,7 @@ import android.view.animation.AnticipateInterpolator;
 import androidx.core.splashscreen.SplashScreen;
 
 
-public class Login extends AppCompatActivity {
+public class Welcome extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

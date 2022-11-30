@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Base application theme. -->
     <style name="Theme.NoNequi" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -19,5 +19,6 @@
         <item name="windowSplashScreenAnimatedIcon">@drawable/logo_splash</item>
         <item name="windowSplashScreenAnimationDuration">200</item>
         <item name="postSplashScreenTheme">@style/Theme.NoNequi</item>
+        <item name="android:windowSplashScreenBrandingImage" tools:targetApi="s">@drawable/branded_image</item>
     </style>
 </resources>

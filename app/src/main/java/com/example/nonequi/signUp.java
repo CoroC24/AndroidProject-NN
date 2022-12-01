@@ -131,9 +131,14 @@ public class signUp extends AppCompatActivity {
     public boolean userCorrect() {
         String user = username.getText().toString();
         Boolean checkUserExists = DB.checkIfUserExists(user);
+        Pattern userRegex = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[_.])(?=\\S+$).{4,}$");
 
         if(user.isEmpty()) {
             binding.InputUserNameSP.setError("Field cannot be empty");
+            return false;
+
+        } else if(!userRegex.matcher(user).matches()) {
+            binding.InputUserNameSP.setError("Please enter a valid username");
             return false;
 
         } else if(checkUserExists == true){

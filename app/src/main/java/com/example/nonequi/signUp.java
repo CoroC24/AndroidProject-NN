@@ -83,6 +83,12 @@ public class signUp extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void  onBackPressed() {
+        Intent intent = new Intent(this, Welcome.class);
+        startActivity(intent);
+    }
+
 
     //Methods to check if data entered are correct
 
@@ -131,7 +137,7 @@ public class signUp extends AppCompatActivity {
     public boolean userCorrect() {
         String user = username.getText().toString();
         Boolean checkUserExists = DB.checkIfUserExists(user);
-        Pattern userRegex = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[_.])(?=\\S+$).{4,}$");
+        Pattern userRegex = Pattern.compile("^(?=\\S+$).{4,}$");
 
         if(user.isEmpty()) {
             binding.InputUserNameSP.setError("Field cannot be empty");

@@ -67,6 +67,12 @@ public class SignIn extends AppCompatActivity {
     }
 
 
+    @Override
+    public void  onBackPressed() {
+        Intent intent = new Intent(this, Welcome.class);
+        startActivity(intent);
+    }
+
 
     // Methods to check if data entered is correct
 

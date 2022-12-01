@@ -54,9 +54,7 @@ public class SignIn extends AppCompatActivity {
 
                     if(consult == true) {
                         Toast.makeText(SignIn.this, "Login successfully", Toast.LENGTH_SHORT).show();
-                        username.setText("");
-                        password.setText("");
-                        Intent intent = new Intent(SignIn.this, Home.class);
+                        Intent intent = new Intent(getApplicationContext(), Home.class);
                         startActivity(intent);
 
                     } else {

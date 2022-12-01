@@ -20,7 +20,7 @@ public class signUp extends AppCompatActivity {
     private EditText username, password, rpassword, email;
     private TextView clickableText;
 
-    DBHelper DB;
+    DBConnection DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class signUp extends AppCompatActivity {
         rpassword = binding.InputRPasswordSP.getEditText();
         email = binding.InputEmailSP.getEditText();
 
-        DB = new DBHelper(this);
+        DB = new DBConnection(this);
 
         clickableText = findViewById(R.id.signInClickableText);
 

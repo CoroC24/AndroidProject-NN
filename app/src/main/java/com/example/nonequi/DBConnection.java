@@ -6,13 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
-public class DBHelper extends SQLiteOpenHelper {
+public class DBConnection extends SQLiteOpenHelper {
 
     public static final String DBName = "nonequi.db";
 
-    public DBHelper(Context context) {
+    public DBConnection(Context context) {
         super(context, "nonequi.db", null, 1);
     }
 

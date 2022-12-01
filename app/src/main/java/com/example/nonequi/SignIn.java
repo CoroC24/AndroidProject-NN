@@ -18,7 +18,7 @@ public class SignIn extends AppCompatActivity {
     private TextView clickableText;
     private EditText username, password;
 
-    DBHelper DB;
+    DBConnection DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class SignIn extends AppCompatActivity {
         username = binding.InputUsername.getEditText();
         password = binding.InputPassword.getEditText();
         clickableText = findViewById(R.id.signUpClickableText);
-        DB = new DBHelper(this);
+        DB = new DBConnection(this);
 
         clickableText.setOnClickListener(new View.OnClickListener() {
             @Override

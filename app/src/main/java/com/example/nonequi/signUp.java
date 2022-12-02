@@ -20,6 +20,11 @@ public class signUp extends AppCompatActivity {
     private EditText username, password, rpassword, email;
     private TextView clickableText;
 
+    /*String fieldEmpty = getResources().getText(R.string.field_empty).toString();
+    String incorrectPass = getResources().getText(R.string.incorrect_pass).toString();
+    String email_used = getResources().getText(R.string.email_used).toString();
+    String validEmail = getResources().getText(R.string.valid_email).toString();*/
+
     DBConnection DB;
 
     @Override
@@ -62,7 +67,7 @@ public class signUp extends AppCompatActivity {
                         Boolean insert = DB.insertData(user, pass, mail);
 
                         if(insert == true) {
-                            Toast.makeText(signUp.this, "Register successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(signUp.this, R.string.register_successfully, Toast.LENGTH_SHORT).show();
                             username.setText("");
                             password.setText("");
                             rpassword.setText("");
@@ -71,12 +76,12 @@ public class signUp extends AppCompatActivity {
                             startActivity(intent);
 
                         } else {
-                            Toast.makeText(signUp.this, "Register failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(signUp.this, R.string.register_failed, Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(signUp.this, "Passwords must be the same in all fields.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(signUp.this, R.string.password_same, Toast.LENGTH_SHORT).show();
                         rpassword.setText("");
-                        binding.InputRPasswordSP.setError("Incorrect password");
+                        binding.InputRPasswordSP.setError("Incorrect Password");
                     }
                 }
             }
@@ -101,8 +106,8 @@ public class signUp extends AppCompatActivity {
             return false;
 
         } else if(checkEmailExists == true) {
-            Toast.makeText(signUp.this, "This email already used", Toast.LENGTH_SHORT).show();
-            binding.InputEmailSP.setError("Email already used");
+            Toast.makeText(signUp.this, R.string.email_used, Toast.LENGTH_SHORT).show();
+            binding.InputEmailSP.setError("This email has already used");
             return false;
 
         } else if(!PatternsCompat.EMAIL_ADDRESS.matcher(mail).matches()) {
@@ -117,7 +122,7 @@ public class signUp extends AppCompatActivity {
 
     public boolean passCorrect() {
         String pass = password.getText().toString();
-        Pattern passRegex = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.:!¡?¿<>])(?=\\S+$).{8,}$");
+        Pattern passRegex = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_,.:!¡?¿<>])(?=\\S+$).{8,}$");
 
         if(pass.isEmpty()) {
             binding.InputPasswordSP.setError("Field cannot be empty");
@@ -148,7 +153,7 @@ public class signUp extends AppCompatActivity {
             return false;
 
         } else if(checkUserExists == true){
-            Toast.makeText(signUp.this, "This user already used", Toast.LENGTH_SHORT).show();
+            Toast.makeText(signUp.this, R.string.user_used, Toast.LENGTH_SHORT).show();
             binding.InputUserNameSP.setError("User already used");
             return false;
 

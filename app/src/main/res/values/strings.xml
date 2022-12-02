@@ -19,4 +19,15 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="repeat_password">Repeat Password</string>
+    <string name="field_empty">Field cannot be empty</string>
+    <string name="register_successfully">Register successfully</string>
+    <string name="password_same">Passwords must be the same in all fields.</string>
+    <string name="incorrect_pass">Incorrect Password</string>
+    <string name="register_failed">Register Failed</string>
+    <string name="email_used">This email has already used</string>
+    <string name="valid_email">Please enter a valid email address</string>
+    <string name="user_used">This user has already used</string>
+    <string name="login_successfully">Login Successfully</string>
+    <string name="login_failed">Login Failed</string>
+    <string name="user_not_exists">This user does not exists</string>
 </resources>

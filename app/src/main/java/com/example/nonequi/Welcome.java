@@ -56,4 +56,12 @@ public class Welcome extends AppCompatActivity {
         Intent intent = new Intent(this, signUp.class);
         startActivity(intent);
     }
+
+    //Method to give action to back button
+
+    @Override
+    public void  onBackPressed() {
+        Intent intent = new Intent(this, Welcome.class);
+        startActivity(intent);
+    }
 }

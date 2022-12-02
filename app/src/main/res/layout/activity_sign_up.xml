@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <ImageView
@@ -103,7 +103,8 @@
             android:textColor="#4C4C4C"
             android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/subtitle"
-            app:layout_constraintEnd_toEndOf="@+id/appName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appName" />
 
         <TextView

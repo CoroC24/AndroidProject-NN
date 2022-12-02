@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NoNequi</string>
+    <string name="nameIcon">NoNequi</string>
+    <string name="welcomeText">¡Bienvenido a NoNequi!</string>
+    <string name="subtitle">La mejor aplicación de transferencias</string>
+    <string name="buttonLogin">INGRESAR</string>
+    <string name="signUpButton">REGISTRARSE</string>
+    <string name="signUpTitle">REGISTRARSE</string>
+    <string name="signInTitle">INGRESAR</string>
+    <string name="textSignIn">Ingresa tu Nombre de Usuario y Contraseña</string>
+    <string name="textSignUp">Ingresa tus Credenciales</string>
+    <string name="rememberPass">Recordar Contraseña</string>
+    <string name="dontHaveAccount">¿Aun no tienes una cuenta?</string>
+    <string name="haveAccount">¿Ya tienes una cuenta?</string>
+    <string name="username">Nombre de Usuario</string>
+    <string name="email">Correo Electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="repeat_password">Repite la Contraseña</string>
+    <string name="field_empty">Este campo no puede estar vacío</string>
+    <string name="register_successfully">Registro Exitoso</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="dummy_button">Botón de basura</string>
+    <string name="dummy_content">BASURA[...]</string>
+    <string name="password_same">La contraseña debe ser igual en todos los campos</string>
+    <string name="incorrect_pass">Contraseña Incorrecta</string>
+    <string name="register_failed">Registro Fallido</string>
+    <string name="email_used">Este correo electrónico ya está siendo usado</string>
+    <string name="valid_email">Por favor, ingresa una dirección de correo electrónico valida</string>
+    <string name="user_used">Este usuario ya se encuentra en uso</string>
+    <string name="login_successfully">Ingreso Exitoso</string>
+    <string name="login_failed">Ingreso Fallido</string>
+    <string name="user_not_exists">Este usuario no existe</string>
+</resources>

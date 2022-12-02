@@ -41,7 +41,6 @@ public class SignIn extends AppCompatActivity {
             }
         });
 
-
         binding.signInButtonSI.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -53,12 +52,15 @@ public class SignIn extends AppCompatActivity {
                     Boolean consult = DB.checkUserPassword(user, pass);
 
                     if(consult == true) {
-                        Toast.makeText(SignIn.this, "Login successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignIn.this, R.string.login_successfully, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), Home.class);
                         startActivity(intent);
 
+                        username.setText("");
+                        password.setText("");
+
                     } else {
-                        Toast.makeText(SignIn.this, "Login failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignIn.this, R.string.login_failed, Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -66,6 +68,7 @@ public class SignIn extends AppCompatActivity {
 
     }
 
+    //Method to give action to back button
 
     @Override
     public void  onBackPressed() {
@@ -78,11 +81,18 @@ public class SignIn extends AppCompatActivity {
 
     public boolean passCorrect() {
         String pass = password.getText().toString();
+        String user = username.getText().toString();
+
+        Boolean checkPassCorrect = DB.checkUserPassword(user, pass);
 
         if(pass.isEmpty()) {
             binding.InputPassword.setError("Field cannot be empty");
             return false;
 
+        } else if (!checkPassCorrect) {
+            Toast.makeText(SignIn.this, R.string.incorrect_pass, Toast.LENGTH_SHORT).show();
+            binding.InputPassword.setError("Password Incorrect");
+            return false;
         } else {
             binding.InputPassword.setError(null);
             return true;
@@ -97,8 +107,8 @@ public class SignIn extends AppCompatActivity {
             binding.InputUsername.setError("Field cannot be empty");
             return false;
 
-        } else if(checkUserExists == false){
-            Toast.makeText(SignIn.this, "This user does not exists", Toast.LENGTH_SHORT).show();
+        } else if(!checkUserExists){
+            Toast.makeText(SignIn.this, R.string.user_not_exists, Toast.LENGTH_SHORT).show();
             binding.InputUsername.setError("User not found");
             return false;
 
@@ -113,13 +123,4 @@ public class SignIn extends AppCompatActivity {
 
         return !ArraysKt.contains(result, false);
     }
-
-    //Method to give action to back button
-
-    /*@Override
-    public void onBackPressed()
-    {
-        super.onBackPressed();
-
-    }*/
 }

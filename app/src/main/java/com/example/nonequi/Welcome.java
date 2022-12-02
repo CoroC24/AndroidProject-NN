@@ -61,7 +61,6 @@ public class Welcome extends AppCompatActivity {
 
     @Override
     public void  onBackPressed() {
-        Intent intent = new Intent(this, Welcome.class);
-        startActivity(intent);
+        finishAffinity();
     }
 }

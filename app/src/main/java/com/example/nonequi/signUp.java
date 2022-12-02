@@ -72,7 +72,7 @@ public class signUp extends AppCompatActivity {
                             password.setText("");
                             rpassword.setText("");
                             email.setText("");
-                            Intent intent = new Intent(getApplicationContext(), SignIn.class);
+                            Intent intent = new Intent(getApplicationContext(), Home.class);
                             startActivity(intent);
 
                         } else {
@@ -87,6 +87,8 @@ public class signUp extends AppCompatActivity {
             }
         });
     }
+
+    //Method to give action to back button
 
     @Override
     public void  onBackPressed() {
@@ -129,6 +131,7 @@ public class signUp extends AppCompatActivity {
             return false;
 
         } else if(!passRegex.matcher(pass).matches()) {
+
             binding.InputPasswordSP.setError("Password is too weak");
             //Toast.makeText(this, "Password must contain at least one upper and lower case character, one number, one special character and 8 or more characters", Toast.LENGTH_SHORT).show();
             return false;
@@ -179,5 +182,14 @@ public class signUp extends AppCompatActivity {
         Boolean[] result = new Boolean[] {this.emailCorrect(), this.passCorrect(), this.userCorrect(), this.rPassCorrect()};
 
         return !ArraysKt.contains(result, false);
+    }
+
+    private void passRegex() {
+        Pattern passRegex = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_,.:!¡?¿<>])(?=\\S+$).{8,}$");
+        Pattern passRegex2 = Pattern.compile("^(?=.*[a-z][A-Z])");
+        Pattern passRegex3 = Pattern.compile("^(?=.*[0-9])");
+        Pattern passRegex4 = Pattern.compile("^(?=.*[@#$%^&+=_,.:!¡?¿<>])");
+        Pattern passRegex5 = Pattern.compile("^(?=\\S+$)");
+        Pattern passRegex6 = Pattern.compile("^.{8,}$");
     }
 }

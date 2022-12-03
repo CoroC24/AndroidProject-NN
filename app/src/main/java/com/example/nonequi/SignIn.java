@@ -79,6 +79,19 @@ public class SignIn extends AppCompatActivity {
 
     // Methods to check if data entered is correct
 
+    public boolean userExists() {
+        String user = username.getText().toString();
+        Boolean checkUserExists = DB.checkIfUserExists(user);
+
+        if(!checkUserExists) {
+            Toast.makeText(SignIn.this, R.string.user_not_exists, Toast.LENGTH_SHORT).show();
+            binding.InputUsername.setError("User not found");
+            return false;
+        }else {
+            return true;
+        }
+    }
+
     public boolean passCorrect() {
         String pass = password.getText().toString();
         String user = username.getText().toString();
@@ -89,25 +102,28 @@ public class SignIn extends AppCompatActivity {
             binding.InputPassword.setError("Field cannot be empty");
             return false;
 
-        } else if (!checkPassCorrect) {
-            Toast.makeText(SignIn.this, R.string.incorrect_pass, Toast.LENGTH_SHORT).show();
-            binding.InputPassword.setError("Password Incorrect");
-            return false;
+        } else if (userExists()) {
+            if (!checkPassCorrect) {
+                Toast.makeText(SignIn.this, R.string.incorrect_pass, Toast.LENGTH_SHORT).show();
+                binding.InputPassword.setError("Password Incorrect");
+                return false;
+            }
         } else {
             binding.InputPassword.setError(null);
-            return true;
+//            return true;
         }
+        return true;
     }
 
     public boolean userCorrect() {
         String user = username.getText().toString();
-        Boolean checkUserExists = DB.checkIfUserExists(user);
+        //Boolean checkUserExists = DB.checkIfUserExists(user);
 
         if(user.isEmpty()) {
             binding.InputUsername.setError("Field cannot be empty");
             return false;
 
-        } else if(!checkUserExists){
+        } else if(!userExists()){
             Toast.makeText(SignIn.this, R.string.user_not_exists, Toast.LENGTH_SHORT).show();
             binding.InputUsername.setError("User not found");
             return false;

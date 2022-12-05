@@ -16,6 +16,7 @@ public class ExitAlertDialog extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 System.exit(1);
+
             }
         }).setNegativeButton(R.string.cancel_dialog, new DialogInterface.OnClickListener() {
 

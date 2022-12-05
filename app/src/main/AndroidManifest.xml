@@ -40,7 +40,7 @@
         <activity
             android:name=".Welcome"
             android:exported="true"
-            android:theme="@style/Theme.App.SplashScreen">
+            android:theme="@style/Theme.NoNequi">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

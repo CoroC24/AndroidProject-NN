@@ -9,7 +9,6 @@
     <string name="signInTitle">SIGN IN </string>
     <string name="textSignIn">Enter your Username and Password</string>
     <string name="textSignUp">Enter your Credentials</string>
-    <string name="rememberPass">Remember Password</string>
     <string name="title_activity_splash_screen">SplashScreen</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
@@ -37,6 +36,8 @@
     <string name="pass_regex5">Password must containt at least 8 or more characters</string>
     <string name="confirm_exit">Are you sure you want to leave?</string>
     <string name="confirm_dialog">Confirm</string>
-    <string name="logout_dialog">Logout</string>
     <string name="cancel_dialog">Cancel</string>
+    <string name="more">More</string>
+    <string name="content_description_logout">Logout</string>
+    <string name="remember_password">Remember Password</string>
 </resources>

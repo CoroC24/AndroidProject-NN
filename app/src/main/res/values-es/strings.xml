@@ -10,7 +10,6 @@
     <string name="signInTitle">INGRESAR</string>
     <string name="textSignIn">Ingresa tu Nombre de Usuario y Contraseña</string>
     <string name="textSignUp">Ingresa tus Credenciales</string>
-    <string name="rememberPass">Recordar Contraseña</string>
     <string name="dontHaveAccount">¿Aun no tienes una cuenta?</string>
     <string name="haveAccount">¿Ya tienes una cuenta?</string>
     <string name="username">Nombre de Usuario</string>
@@ -38,6 +37,8 @@
     <string name="pass_regex5">La contraseña debe tener 8 carácteres o más</string>
     <string name="confirm_exit">¿Seguro quieres salir?</string>
     <string name="confirm_dialog">Confirmar</string>
-    <string name="logout_dialog">Cerrar sesión</string>
     <string name="cancel_dialog">Cancelar</string>
+    <string name="more">Más</string>
+    <string name="content_description_logout">Cerrar Sesión</string>
+    <string name="remember_password">Recordar Contraseña</string>
 </resources>

@@ -3,8 +3,11 @@ package com.example.nonequi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.Checkable;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +22,7 @@ public class SignIn extends AppCompatActivity {
     private EditText username, password;
 
     DBConnection DB;
+    sessionManagement sessionManagement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,11 @@ public class SignIn extends AppCompatActivity {
         username = binding.InputUsername.getEditText();
         password = binding.InputPassword.getEditText();
         clickableText = findViewById(R.id.signUpClickableText);
+
         DB = new DBConnection(this);
+        sessionManagement = new sessionManagement(SignIn.this);
+
+        // Setting click listener
 
         clickableText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,10 +62,13 @@ public class SignIn extends AppCompatActivity {
                     if(consult == true) {
                         Toast.makeText(SignIn.this, R.string.login_successfully, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), Home.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
 
                         username.setText("");
                         password.setText("");
+
+                        sessionManagement.saveSession(true);
 
                     } else {
                         Toast.makeText(SignIn.this, R.string.login_failed, Toast.LENGTH_SHORT).show();
@@ -105,12 +116,12 @@ public class SignIn extends AppCompatActivity {
         } else if (userExists()) {
             if (!checkPassCorrect) {
                 Toast.makeText(SignIn.this, R.string.incorrect_pass, Toast.LENGTH_SHORT).show();
-                binding.InputPassword.setError("Password Incorrect");
+                binding.InputPassword.setError("Incorrect Password");
                 return false;
             }
         } else {
             binding.InputPassword.setError(null);
-//            return true;
+            //return true;
         }
         return true;
     }

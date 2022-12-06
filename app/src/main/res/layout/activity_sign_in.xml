@@ -28,14 +28,17 @@
             android:id="@+id/signInButtonSI"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/style_button_fill"
             android:text="@string/buttonLogin"
             android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rememberPassCheckBox" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.721" />
 
         <TextView
             android:id="@+id/subtitle"
@@ -137,22 +140,18 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="164dp"
             android:layout_marginEnd="14dp"
-            android:layout_marginBottom="18dp"
-            android:layout_marginTop="15dp"
             android:text="@string/dontHaveAccount"
             android:textColor="#B8B8B8"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/signUpClickableText"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signInButtonSI"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/InputPassword" />
 
         <TextView
             android:id="@+id/signUpClickableText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="16dp"
             android:clickable="true"
             android:focusable="true"
             android:minHeight="48dp"
@@ -160,17 +159,6 @@
             android:textColor="#4C4C4C"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="parent" />
-
-        <CheckBox
-            android:id="@+id/rememberPassCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/remember_password"
-            android:textColor="#7A7A7A"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.11"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/InputPassword" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

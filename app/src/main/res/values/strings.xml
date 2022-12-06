@@ -37,7 +37,7 @@
     <string name="confirm_exit">Are you sure you want to leave?</string>
     <string name="confirm_dialog">Confirm</string>
     <string name="cancel_dialog">Cancel</string>
-    <string name="more">More</string>
+    <string name="logout">More</string>
     <string name="content_description_logout">Logout</string>
     <string name="remember_password">Remember Password</string>
 </resources>

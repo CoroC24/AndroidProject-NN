@@ -20,12 +20,8 @@ public class signUp extends AppCompatActivity {
     private EditText username, password, rpassword, email;
     private TextView clickableText;
 
-    /*String fieldEmpty = getResources().getText(R.string.field_empty).toString();
-    String incorrectPass = getResources().getText(R.string.incorrect_pass).toString();
-    String email_used = getResources().getText(R.string.email_used).toString();
-    String validEmail = getResources().getText(R.string.valid_email).toString();*/
-
     DBConnection DB;
+    sessionManagement sessionManagement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +37,7 @@ public class signUp extends AppCompatActivity {
         email = binding.InputEmailSP.getEditText();
 
         DB = new DBConnection(this);
+        sessionManagement = new sessionManagement(signUp.this);
 
         clickableText = findViewById(R.id.signInClickableText);
 
@@ -73,7 +70,10 @@ public class signUp extends AppCompatActivity {
                             rpassword.setText("");
                             email.setText("");
                             Intent intent = new Intent(getApplicationContext(), Home.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
+
+                            sessionManagement.saveSession(true);
 
                         } else {
                             Toast.makeText(signUp.this, R.string.register_failed, Toast.LENGTH_SHORT).show();
@@ -184,12 +184,14 @@ public class signUp extends AppCompatActivity {
         return !ArraysKt.contains(result, false);
     }
 
-    private void passRegex() {
+    private boolean passRegex() {
         Pattern passRegex = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_,.:!¡?¿<>])(?=\\S+$).{8,}$");
         Pattern passRegex2 = Pattern.compile("^(?=.*[a-z][A-Z])");
         Pattern passRegex3 = Pattern.compile("^(?=.*[0-9])");
         Pattern passRegex4 = Pattern.compile("^(?=.*[@#$%^&+=_,.:!¡?¿<>])");
         Pattern passRegex5 = Pattern.compile("^(?=\\S+$)");
         Pattern passRegex6 = Pattern.compile("^.{8,}$");
+
+        return true;
     }
 }

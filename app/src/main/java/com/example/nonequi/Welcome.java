@@ -19,10 +19,6 @@ import androidx.core.splashscreen.SplashScreen;
 
 public class Welcome extends AppCompatActivity {
 
-    private static final String stringPreferences = "com.example.nonequi";
-    private static final String preferencesStatusRPass = "status.session";
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
@@ -57,6 +53,31 @@ public class Welcome extends AppCompatActivity {
     protected void onStart() {
 
         super.onStart();
+
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            getSplashScreen().setOnExitAnimationListener(splashScreenView -> {
+                final ObjectAnimator slideLeft = ObjectAnimator.ofFloat(
+                        splashScreenView,
+                        View.TRANSLATION_X,
+                        0f,
+                        -splashScreenView.getWidth()
+                );
+                slideLeft.setInterpolator(new AnticipateInterpolator());
+                slideLeft.setDuration(350L);
+
+                slideLeft.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        splashScreenView.remove();
+                    }
+                });
+
+                slideLeft.start();
+            });
+        }
+
+        splashScreen.setKeepOnScreenCondition(() -> false );
 
         checkStatusLogged();
     }

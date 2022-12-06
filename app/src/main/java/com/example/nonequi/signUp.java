@@ -53,7 +53,7 @@ public class signUp extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                String user = username.getText().toString();
+                String user = username.getText().toString().trim();
                 String pass = password.getText().toString();
                 String rpass = rpassword.getText().toString();
                 String mail = email.getText().toString();
@@ -104,7 +104,7 @@ public class signUp extends AppCompatActivity {
         Boolean checkEmailExists = DB.checkIfEmailExists(mail);
 
         if (mail.isEmpty()) {
-            binding.InputEmailSP.setError("Field cannot be empty");
+            binding.InputEmailSP.setError("El campo no puede estar vacío.");
             return false;
 
         } else if(checkEmailExists == true) {
@@ -114,6 +114,7 @@ public class signUp extends AppCompatActivity {
 
         } else if(!PatternsCompat.EMAIL_ADDRESS.matcher(mail).matches()) {
             binding.InputEmailSP.setError("Please enter a valid email address");
+            Toast.makeText(signUp.this, R.string.valid_email, Toast.LENGTH_SHORT).show();
             return false;
 
         } else {
@@ -132,8 +133,8 @@ public class signUp extends AppCompatActivity {
 
         } else if(!passRegex.matcher(pass).matches()) {
 
+            passRegex();
             binding.InputPasswordSP.setError("Password is too weak");
-            //Toast.makeText(this, "Password must contain at least one upper and lower case character, one number, one special character and 8 or more characters", Toast.LENGTH_SHORT).show();
             return false;
 
         } else {
@@ -184,14 +185,33 @@ public class signUp extends AppCompatActivity {
         return !ArraysKt.contains(result, false);
     }
 
-    private boolean passRegex() {
-        Pattern passRegex = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_,.:!¡?¿<>])(?=\\S+$).{8,}$");
-        Pattern passRegex2 = Pattern.compile("^(?=.*[a-z][A-Z])");
-        Pattern passRegex3 = Pattern.compile("^(?=.*[0-9])");
-        Pattern passRegex4 = Pattern.compile("^(?=.*[@#$%^&+=_,.:!¡?¿<>])");
-        Pattern passRegex5 = Pattern.compile("^(?=\\S+$)");
-        Pattern passRegex6 = Pattern.compile("^.{8,}$");
+    private void passRegex() {
+        String pass = password.getText().toString();
 
-        return true;
+        if(!pass.matches(".*[a-z].*")) {
+            Toast.makeText(signUp.this, R.string.pass_regex_minus, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(!pass.matches(".*[A-Z].*")) {
+            Toast.makeText(signUp.this, R.string.pass_regex_mayus, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(!pass.matches(".*[0-9].*")) {
+            Toast.makeText(signUp.this, R.string.pass_regex_number, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(!pass.matches(".*[@#$%^&+=_,.:!¡?¿<>].*")) {
+            Toast.makeText(signUp.this, R.string.pass_regex_special_char, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(!pass.matches(".*[{8,}].*")) {
+            Toast.makeText(signUp.this, R.string.pass_regex_length, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(pass.matches(".*[(?=\\S+$)].*")) {
+            Toast.makeText(signUp.this, R.string.pass_regex_spaces, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
     }
 }

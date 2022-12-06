@@ -29,11 +29,12 @@
     <string name="login_successfully">Login Successfully</string>
     <string name="login_failed">Login Failed</string>
     <string name="user_not_exists">This user does not exists</string>
-    <string name="pass_regex1">Password must contain at least one upper and lower case character</string>
-    <string name="pass_regex2">Password must contain at least one number</string>
-    <string name="pass_regex3">Password must contain at least one special character</string>
-    <string name="pass_regex4">Password cannot contain spaces</string>
-    <string name="pass_regex5">Password must containt at least 8 or more characters</string>
+    <string name="pass_regex_mayus">Password must contain at least one upper case character</string>
+    <string name="pass_regex_minus">Password must contain at least one lower case character</string>
+    <string name="pass_regex_number">Password must contain at least one number</string>
+    <string name="pass_regex_special_char">Password must contain at least one special character</string>
+    <string name="pass_regex_spaces">Password cannot contain spaces</string>
+    <string name="pass_regex_length">Password must contain at least 8 or more characters</string>
     <string name="confirm_exit">Are you sure you want to leave?</string>
     <string name="confirm_dialog">Confirm</string>
     <string name="cancel_dialog">Cancel</string>

@@ -74,9 +74,6 @@ public class Home extends AppCompatActivity {
 
     @Override
     public void  onBackPressed() {
-        /*DialogFragment exitDialog = new ExitAlertDialog();
-        exitDialog.show(getSupportFragmentManager(), "Exit");*/
-
         if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()) {
             super.onBackPressed();
             return;
@@ -87,7 +84,9 @@ public class Home extends AppCompatActivity {
         }
 
         mBackPressed = System.currentTimeMillis();
+    }
 
-//        finishAffinity();
+    public void retrieveUser() {
+
     }
 }

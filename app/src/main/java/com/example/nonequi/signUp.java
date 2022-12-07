@@ -18,7 +18,7 @@ import kotlin.collections.ArraysKt;
 public class signUp extends AppCompatActivity {
 
     private ActivitySignUpBinding binding;
-    private EditText username, password, rpassword, email;
+    private EditText phoneNumber, username, password, rpassword, email;
     private TextView clickableText;
 
     DBConnection DB;
@@ -32,6 +32,7 @@ public class signUp extends AppCompatActivity {
 
         setContentView(view);
 
+        phoneNumber = binding.InputPhoneNumberSP.getEditText();
         username = binding.InputUserNameSP.getEditText();
         password = binding.InputPasswordSP.getEditText();
         rpassword = binding.InputRPasswordSP.getEditText();
@@ -54,7 +55,8 @@ public class signUp extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                String user = username.getText().toString().trim();
+                String number = phoneNumber.getText().toString();
+                String user = username.getText().toString();
                 String pass = password.getText().toString();
                 String rpass = rpassword.getText().toString();
                 String mail = email.getText().toString();
@@ -62,19 +64,21 @@ public class signUp extends AppCompatActivity {
 
                  if(validateData()) {
                     if(pass.equals(rpass)) {
-                        Boolean insert = DB.insertData(user, pass, mail);
+                        Boolean insert = DB.insertData(number, user, pass, mail);
 
                         if(insert == true) {
                             Toast.makeText(signUp.this, R.string.register_successfully, Toast.LENGTH_SHORT).show();
+                            phoneNumber.setText("");
                             username.setText("");
                             password.setText("");
                             rpassword.setText("");
                             email.setText("");
-                            Intent intent = new Intent(getApplicationContext(), Home.class);
+
+                            Intent intent = new Intent(getApplicationContext(), SignIn.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
 
-                            sessionManagement.saveSession(true);
+//                            sessionManagement.saveSession(true);
 
                         } else {
                             Toast.makeText(signUp.this, R.string.register_failed, Toast.LENGTH_SHORT).show();
@@ -106,7 +110,7 @@ public class signUp extends AppCompatActivity {
         Boolean checkEmailExists = DB.checkIfEmailExists(mail);
 
         if (mail.isEmpty()) {
-            binding.InputEmailSP.setError("El campo no puede estar vacío.");
+            binding.InputEmailSP.setError("Field cannot be empty");
             return false;
 
         } else if(checkEmailExists == true) {
@@ -150,24 +154,43 @@ public class signUp extends AppCompatActivity {
     public boolean userCorrect() {
         String user = username.getText().toString();
         Boolean checkUserExists = DB.checkIfUserExists(user);
-        Pattern userRegex = Pattern.compile("^(?=\\S+$).{4,}$");
+        Pattern userRegex = Pattern.compile("^.{8,}$");
 
         if(user.isEmpty()) {
             binding.InputUserNameSP.setError("Field cannot be empty");
             return false;
 
         } else if(!userRegex.matcher(user).matches()) {
-            binding.InputUserNameSP.setError("Please enter a valid username");
+            userRegex();
+            binding.InputUserNameSP.setError("Please enter a valid name");
             return false;
 
-        } else if(checkUserExists == true){
+        } /*else if(checkUserExists){
 //            Toast.makeText(signUp.this, R.string.user_used, Toast.LENGTH_SHORT).show();
             Snackbar.make(findViewById(android.R.id.content), R.string.user_used, Toast.LENGTH_SHORT).show();
-            binding.InputUserNameSP.setError("User already used");
+            binding.InputUserNameSP.setError("This user has already used");
+            return false;
+
+        }*/ else {
+            binding.InputUserNameSP.setError(null);
+            return true;
+        }
+    }
+
+    public boolean numberCorrect() {
+        String number = phoneNumber.getText().toString();
+        Boolean checkNumberExists = DB.checkIfNumberExists(number);
+
+        if(number.isEmpty()) {
+            binding.InputPhoneNumberSP.setError("Field cannot be empty");
+            return false;
+
+        } else if(checkNumberExists) {
+            Snackbar.make(findViewById(android.R.id.content), R.string.phone_number_used, Snackbar.LENGTH_SHORT).show();
+            binding.InputPhoneNumberSP.setError("This number has already used");
             return false;
 
         } else {
-            binding.InputUserNameSP.setError(null);
             return true;
         }
     }
@@ -185,7 +208,7 @@ public class signUp extends AppCompatActivity {
     }
 
     private boolean validateData() {
-        Boolean[] result = new Boolean[] {this.emailCorrect(), this.passCorrect(), this.userCorrect(), this.rPassCorrect()};
+        Boolean[] result = new Boolean[] {this.emailCorrect(), this.passCorrect(), this.userCorrect(), this.numberCorrect(), this.rPassCorrect()};
 
         return !ArraysKt.contains(result, false);
     }
@@ -224,5 +247,14 @@ public class signUp extends AppCompatActivity {
             return;
         }
 
+    }
+
+    private void userRegex() {
+        String user = username.getText().toString();
+
+        if (user.matches(".*[0-9].*")) {
+            Snackbar.make(findViewById(android.R.id.content), R.string.user_regex_number, Toast.LENGTH_SHORT).show();
+            return;
+        }
     }
 }

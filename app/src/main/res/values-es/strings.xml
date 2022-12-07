@@ -12,7 +12,7 @@
     <string name="textSignUp">Ingresa tus Credenciales</string>
     <string name="dontHaveAccount">¿Aun no tienes una cuenta?</string>
     <string name="haveAccount">¿Ya tienes una cuenta?</string>
-    <string name="username">Nombre de Usuario</string>
+    <string name="username">Nombre</string>
     <string name="email">Correo Electrónico</string>
     <string name="password">Contraseña</string>
     <string name="repeat_password">Repite la Contraseña</string>
@@ -43,4 +43,8 @@
     <string name="remember_password">Recordar Contraseña</string>
     <string name="pass_regex_minus">La contraseña debe tener al menos un carácter en minúscula</string>
     <string name="back_button_pressed_message">Presiona de nuevo el botón de atras para salir</string>
+    <string name="phone_number">Número de teléfono</string>
+    <string name="phone_number_used">Este número de teléfono ya está siendo usado</string>
+    <string name="user_regex_number">El ususario no debería contener números</string>
+    <string name="hi">Hola,</string>
 </resources>

@@ -14,7 +14,7 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="dontHaveAccount">Do not have an account?</string>
     <string name="haveAccount">Already have an account?</string>
-    <string name="username">Username</string>
+    <string name="username">Name</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="repeat_password">Repeat Password</string>
@@ -42,4 +42,8 @@
     <string name="content_description_logout">Logout</string>
     <string name="remember_password">Remember Password</string>
     <string name="back_button_pressed_message">Press the Back button again to exit</string>
+    <string name="phone_number">Phone number</string>
+    <string name="phone_number_used">This phone number has already used</string>
+    <string name="user_regex_number">The user shouldn\'t contain numbers</string>
+    <string name="hi">Hi,</string>
 </resources>

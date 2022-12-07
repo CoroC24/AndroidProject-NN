@@ -21,7 +21,7 @@ public class SignIn extends AppCompatActivity {
 
     private ActivitySignInBinding binding;
     private TextView clickableText;
-    private EditText username, password;
+    private EditText phoneNumber, password;
 
     DBConnection DB;
     sessionManagement sessionManagement;
@@ -34,7 +34,7 @@ public class SignIn extends AppCompatActivity {
 
         setContentView(view);
 
-        username = binding.InputUsername.getEditText();
+        phoneNumber = binding.InputPhoneNumber.getEditText();
         password = binding.InputPassword.getEditText();
         clickableText = findViewById(R.id.signUpClickableText);
 
@@ -55,11 +55,11 @@ public class SignIn extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                String user = username.getText().toString();
+                String number = phoneNumber.getText().toString();
                 String pass = password.getText().toString();
 
                 if(validateData()) {
-                    Boolean consult = DB.checkUserPassword(user, pass);
+                    Boolean consult = DB.checkUserPassword(number, pass);
 
                     if(consult == true) {
                         Toast.makeText(SignIn.this, R.string.login_successfully, Toast.LENGTH_SHORT).show();
@@ -68,7 +68,7 @@ public class SignIn extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
 
-                        username.setText("");
+                        phoneNumber.setText("");
                         password.setText("");
 
                         sessionManagement.saveSession(true);
@@ -93,9 +93,9 @@ public class SignIn extends AppCompatActivity {
 
     // Methods to check if data entered is correct
 
-    public boolean userExists() {
-        String user = username.getText().toString();
-        Boolean checkUserExists = DB.checkIfUserExists(user);
+    public boolean numberExists() {
+        String number = phoneNumber.getText().toString();
+        Boolean checkUserExists = DB.checkIfNumberExists(number);
 
         if(!checkUserExists) {
             return false;
@@ -106,15 +106,15 @@ public class SignIn extends AppCompatActivity {
 
     public boolean passCorrect() {
         String pass = password.getText().toString();
-        String user = username.getText().toString();
+        String number = phoneNumber.getText().toString();
 
-        Boolean checkPassCorrect = DB.checkUserPassword(user, pass);
+        Boolean checkPassCorrect = DB.checkUserPassword(number, pass);
 
         if(pass.isEmpty()) {
             binding.InputPassword.setError("Field cannot be empty");
             return false;
 
-        } else if (userExists()) {
+        } else if (numberExists()) {
             if (!checkPassCorrect) {
 //                Toast.makeText(SignIn.this, R.string.incorrect_pass, Toast.LENGTH_SHORT).show();
                 Snackbar.make(findViewById(android.R.id.content), R.string.incorrect_pass, Toast.LENGTH_SHORT).show();
@@ -128,28 +128,30 @@ public class SignIn extends AppCompatActivity {
         return true;
     }
 
-    public boolean userCorrect() {
-        String user = username.getText().toString();
+    public boolean numberCorrect() {
+        String number = phoneNumber.getText().toString();
         //Boolean checkUserExists = DB.checkIfUserExists(user);
 
-        if(user.isEmpty()) {
-            binding.InputUsername.setError("Field cannot be empty");
+        if(number.isEmpty()) {
+            binding.InputPhoneNumber.setError("Field cannot be empty");
             return false;
 
-        } else if(!userExists()){
+        } else if(!numberExists()){
             Snackbar.make(findViewById(android.R.id.content), R.string.user_not_exists, Toast.LENGTH_SHORT).show();
-            binding.InputUsername.setError("User not found");
+            binding.InputPhoneNumber.setError("Number not found");
             return false;
 
         } else {
-            binding.InputUsername.setError(null);
+            binding.InputPhoneNumber.setError(null);
             return true;
         }
     }
 
     private boolean validateData() {
-        Boolean[] result = new Boolean[] {userCorrect(), passCorrect()};
+        Boolean[] result = new Boolean[] {numberCorrect(), passCorrect()};
 
         return !ArraysKt.contains(result, false);
     }
+
+    
 }

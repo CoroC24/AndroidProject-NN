@@ -14,10 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/toolBarColorDark"
-        app:liftOnScroll="false"
-        app:layout_constraintTop_toTopOf="@id/backLayout"
         app:layout_constraintEnd_toEndOf="@id/backLayout"
         app:layout_constraintStart_toStartOf="@id/backLayout"
+        app:layout_constraintTop_toTopOf="@id/backLayout"
+        app:liftOnScroll="false"
         app:liftOnScrollTargetViewId="@id/scrollView">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -31,26 +31,31 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/scrollView"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingStart="8dp"
+        android:text="@string/hi"
+        android:textAlignment="textStart"
+        android:textColor="#E1E1E1"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="TextView"
-        android:textAlignment="center"
+        android:layout_marginStart="5dp"
+        android:paddingStart="8dp"
+        android:text="Temporal Text"
+        android:textAlignment="textStart"
+        android:textColor="#E1E1E1"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView" />
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

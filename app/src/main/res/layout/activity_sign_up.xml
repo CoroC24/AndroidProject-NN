@@ -14,6 +14,31 @@
         android:layout_height="wrap_content">
 
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/InputPhoneNumberSP"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone_number"
+            android:paddingHorizontal="20dp"
+            android:textColorHint="#B8B8B8"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/InputUserNameSP"
+            app:layout_constraintBottom_toTopOf="@id/InputPasswordSP"
+            app:startIconDrawable="@android:drawable/stat_sys_phone_call">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:inputType="number"
+                app:layout_constraintTop_toBottomOf="@+id/subtitle"
+                tools:layout_editor_absoluteX="0dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <ImageView
             android:id="@+id/logo"
             android:layout_width="124dp"
@@ -23,7 +48,6 @@
             android:src="@mipmap/logo"
             app:layout_constraintBottom_toTopOf="@+id/appName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,14 +55,13 @@
             android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="32dp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/textSignUp"
             android:textColor="#7A7A7A"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/InputEmailSP"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
@@ -52,11 +75,10 @@
             android:paddingRight="20dp"
             android:textColorHint="#B8B8B8"
             app:errorEnabled="true"
-            app:layout_constraintBottom_toTopOf="@+id/InputUserNameSP"
+            app:layout_constraintBottom_toTopOf="@id/InputUserNameSP"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subtitle"
+            app:layout_constraintTop_toBottomOf="@id/subtitle"
             app:startIconDrawable="@drawable/ic_baseline_email_24">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -73,21 +95,20 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
             android:hint="@string/username"
             android:paddingHorizontal="20dp"
             android:textColorHint="#B8B8B8"
             app:errorEnabled="true"
-            app:layout_constraintBottom_toTopOf="@+id/InputPasswordSP"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:startIconDrawable="@drawable/ic_baseline_person_24"
             app:layout_constraintTop_toBottomOf="@+id/InputEmailSP"
-            app:startIconDrawable="@drawable/ic_baseline_person_24">
+            app:layout_constraintBottom_toTopOf="@id/InputPhoneNumberSP"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="0dp"
                 android:inputType="textPersonName"
                 app:layout_constraintTop_toBottomOf="@+id/subtitle"
                 tools:layout_editor_absoluteX="0dp" />
@@ -133,11 +154,12 @@
             app:endIconMode="password_toggle"
             app:errorEnabled="true"
             app:errorIconDrawable="@null"
-            app:layout_constraintBottom_toTopOf="@+id/InputRPasswordSP"
+            app:startIconDrawable="@drawable/ic_baseline_lock_24"
+            app:layout_constraintTop_toBottomOf="@+id/InputPhoneNumberSP"
+            app:layout_constraintBottom_toTopOf="@id/InputRPasswordSP"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/InputUserNameSP"
-            app:startIconDrawable="@drawable/ic_baseline_lock_24">
+            tools:layout_editor_absoluteY="424dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -159,10 +181,9 @@
             app:endIconMode="password_toggle"
             app:errorEnabled="true"
             app:errorIconDrawable="@null"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:startIconDrawable="@drawable/ic_baseline_lock_24"
             app:layout_constraintTop_toBottomOf="@+id/InputPasswordSP"
-            app:startIconDrawable="@drawable/ic_baseline_lock_24">
+            tools:layout_editor_absoluteY="505dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -174,30 +195,30 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/haveAccount"
+            android:textColor="#B8B8B8"
+            app:layout_constraintEnd_toStartOf="@+id/signInClickableText"
+            app:layout_constraintTop_toBottomOf="@id/InputRPasswordSP" />
+
         <Button
             android:id="@+id/signUpButtonSP"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_marginTop="40dp"
+            android:layout_marginBottom="35dp"
             android:background="@drawable/style_button_fill"
             android:text="@string/signUpButton"
             android:textColor="@color/white"
-            android:layout_marginBottom="35dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/constraint"
-            app:layout_constraintTop_toBottomOf="@+id/textView"/>
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:text="@string/haveAccount"
-            android:textColor="#B8B8B8"
-            app:layout_constraintEnd_toStartOf="@+id/signInClickableText"
-            app:layout_constraintTop_toBottomOf="@+id/InputRPasswordSP" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.524"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <TextView
             android:id="@+id/signInClickableText"

@@ -42,4 +42,5 @@
     <string name="content_description_logout">Cerrar Sesión</string>
     <string name="remember_password">Recordar Contraseña</string>
     <string name="pass_regex_minus">La contraseña debe tener al menos un carácter en minúscula</string>
+    <string name="back_button_pressed_message">Presiona de nuevo el botón de atras para salir</string>
 </resources>

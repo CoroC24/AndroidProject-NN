@@ -41,4 +41,5 @@
     <string name="logout">More</string>
     <string name="content_description_logout">Logout</string>
     <string name="remember_password">Remember Password</string>
+    <string name="back_button_pressed_message">Press the Back button again to exit</string>
 </resources>

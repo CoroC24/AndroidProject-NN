@@ -2,23 +2,33 @@ package com.example.nonequi;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.DialogFragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nonequi.databinding.ActivityHomeBinding;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.snackbar.Snackbar;
 
 
 public class Home extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
     private TextView textViewTemp;
+
+    private static final int TIME_INTERVAL = 2000;
+    private long mBackPressed;
 
     DBConnection DB;
     sessionManagement sessionManagement;
@@ -51,8 +61,6 @@ public class Home extends AppCompatActivity {
                     startActivity(intent);
 
                     sessionManagement.removeSession();
-                    /*SharedPreferences preferences = getSharedPreferences(stringPreferences, MODE_PRIVATE);
-                    preferences.edit().clear().apply();*/
                 }
                 return false;
             }
@@ -69,6 +77,17 @@ public class Home extends AppCompatActivity {
         /*DialogFragment exitDialog = new ExitAlertDialog();
         exitDialog.show(getSupportFragmentManager(), "Exit");*/
 
-        finishAffinity();
+        if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()) {
+            super.onBackPressed();
+            return;
+        } else {
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), R.string.back_button_pressed_message, Snackbar.LENGTH_SHORT);
+
+            snackbar.show();
+        }
+
+        mBackPressed = System.currentTimeMillis();
+
+//        finishAffinity();
     }
 }

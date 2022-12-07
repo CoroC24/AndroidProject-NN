@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.regex.Pattern;
 import com.example.nonequi.databinding.ActivitySignUpBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 import kotlin.collections.ArraysKt;
 
@@ -79,7 +80,8 @@ public class signUp extends AppCompatActivity {
                             Toast.makeText(signUp.this, R.string.register_failed, Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(signUp.this, R.string.password_same, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(signUp.this, R.string.password_same, Toast.LENGTH_SHORT).show();
+                        Snackbar.make(findViewById(android.R.id.content), R.string.password_same, Toast.LENGTH_SHORT).show();
                         rpassword.setText("");
                         binding.InputRPasswordSP.setError("Incorrect Password");
                     }
@@ -108,13 +110,15 @@ public class signUp extends AppCompatActivity {
             return false;
 
         } else if(checkEmailExists == true) {
-            Toast.makeText(signUp.this, R.string.email_used, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(signUp.this, R.string.email_used, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.email_used, Toast.LENGTH_SHORT).show();
             binding.InputEmailSP.setError("This email has already used");
             return false;
 
         } else if(!PatternsCompat.EMAIL_ADDRESS.matcher(mail).matches()) {
             binding.InputEmailSP.setError("Please enter a valid email address");
-            Toast.makeText(signUp.this, R.string.valid_email, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(signUp.this, R.string.valid_email, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.valid_email, Toast.LENGTH_SHORT).show();
             return false;
 
         } else {
@@ -157,7 +161,8 @@ public class signUp extends AppCompatActivity {
             return false;
 
         } else if(checkUserExists == true){
-            Toast.makeText(signUp.this, R.string.user_used, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(signUp.this, R.string.user_used, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.user_used, Toast.LENGTH_SHORT).show();
             binding.InputUserNameSP.setError("User already used");
             return false;
 
@@ -189,27 +194,33 @@ public class signUp extends AppCompatActivity {
         String pass = password.getText().toString();
 
         if(!pass.matches(".*[a-z].*")) {
-            Toast.makeText(signUp.this, R.string.pass_regex_minus, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(signUp.this, R.string.pass_regex_minus, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.pass_regex_minus,Snackbar.LENGTH_SHORT).show();
             return;
         }
         if(!pass.matches(".*[A-Z].*")) {
-            Toast.makeText(signUp.this, R.string.pass_regex_mayus, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(signUp.this, R.string.pass_regex_mayus, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.pass_regex_mayus, Toast.LENGTH_SHORT).show();
             return;
         }
         if(!pass.matches(".*[0-9].*")) {
-            Toast.makeText(signUp.this, R.string.pass_regex_number, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(signUp.this, R.string.pass_regex_number, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.pass_regex_number, Toast.LENGTH_SHORT).show();
             return;
         }
         if(!pass.matches(".*[@#$%^&+=_,.:!¡?¿<>].*")) {
-            Toast.makeText(signUp.this, R.string.pass_regex_special_char, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(signUp.this, R.string.pass_regex_special_char, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.pass_regex_special_char, Toast.LENGTH_SHORT).show();
             return;
         }
         if(!pass.matches(".*[{8,}].*")) {
-            Toast.makeText(signUp.this, R.string.pass_regex_length, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(signUp.this, R.string.pass_regex_length, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.pass_regex_length, Toast.LENGTH_SHORT).show();
             return;
         }
         if(pass.matches(".*[(?=\\S+$)].*")) {
-            Toast.makeText(signUp.this, R.string.pass_regex_spaces, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(signUp.this, R.string.pass_regex_spaces, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.pass_regex_spaces, Toast.LENGTH_SHORT).show();
             return;
         }
 

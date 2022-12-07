@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nonequi.databinding.ActivitySignInBinding;
+import com.google.android.material.snackbar.Snackbar;
+
 import kotlin.collections.ArraysKt;
 
 public class SignIn extends AppCompatActivity {
@@ -61,6 +63,7 @@ public class SignIn extends AppCompatActivity {
 
                     if(consult == true) {
                         Toast.makeText(SignIn.this, R.string.login_successfully, Toast.LENGTH_SHORT).show();
+
                         Intent intent = new Intent(getApplicationContext(), Home.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
@@ -95,8 +98,6 @@ public class SignIn extends AppCompatActivity {
         Boolean checkUserExists = DB.checkIfUserExists(user);
 
         if(!checkUserExists) {
-            Toast.makeText(SignIn.this, R.string.user_not_exists, Toast.LENGTH_SHORT).show();
-            binding.InputUsername.setError("User not found");
             return false;
         }else {
             return true;
@@ -115,7 +116,8 @@ public class SignIn extends AppCompatActivity {
 
         } else if (userExists()) {
             if (!checkPassCorrect) {
-                Toast.makeText(SignIn.this, R.string.incorrect_pass, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(SignIn.this, R.string.incorrect_pass, Toast.LENGTH_SHORT).show();
+                Snackbar.make(findViewById(android.R.id.content), R.string.incorrect_pass, Toast.LENGTH_SHORT).show();
                 binding.InputPassword.setError("Incorrect Password");
                 return false;
             }
@@ -135,7 +137,7 @@ public class SignIn extends AppCompatActivity {
             return false;
 
         } else if(!userExists()){
-            Toast.makeText(SignIn.this, R.string.user_not_exists, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.user_not_exists, Toast.LENGTH_SHORT).show();
             binding.InputUsername.setError("User not found");
             return false;
 

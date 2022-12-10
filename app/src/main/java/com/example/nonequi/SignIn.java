@@ -3,11 +3,8 @@ package com.example.nonequi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.Checkable;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +39,6 @@ public class SignIn extends AppCompatActivity {
         sessionManagement = new sessionManagement(SignIn.this);
 
         // Setting click listener
-
         clickableText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +56,9 @@ public class SignIn extends AppCompatActivity {
 
                 if(validateData()) {
                     Boolean consult = DB.checkUserPassword(number, pass);
+
+                    DBConnection.usuarios.setNumber(number);
+                    DB.retrieveData(number);
 
                     if(consult == true) {
                         Toast.makeText(SignIn.this, R.string.login_successfully, Toast.LENGTH_SHORT).show();
@@ -93,7 +92,7 @@ public class SignIn extends AppCompatActivity {
 
     // Methods to check if data entered is correct
 
-    public boolean numberExists() {
+    private boolean numberExists() {
         String number = phoneNumber.getText().toString();
         Boolean checkUserExists = DB.checkIfNumberExists(number);
 
@@ -104,7 +103,7 @@ public class SignIn extends AppCompatActivity {
         }
     }
 
-    public boolean passCorrect() {
+    private boolean passCorrect() {
         String pass = password.getText().toString();
         String number = phoneNumber.getText().toString();
 
@@ -128,7 +127,7 @@ public class SignIn extends AppCompatActivity {
         return true;
     }
 
-    public boolean numberCorrect() {
+    private boolean numberCorrect() {
         String number = phoneNumber.getText().toString();
         //Boolean checkUserExists = DB.checkIfUserExists(user);
 
@@ -153,5 +152,6 @@ public class SignIn extends AppCompatActivity {
         return !ArraysKt.contains(result, false);
     }
 
-    
+
+    //Method to get the number entered by the user
 }

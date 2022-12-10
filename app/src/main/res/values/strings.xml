@@ -46,4 +46,5 @@
     <string name="phone_number_used">This phone number has already used</string>
     <string name="user_regex_number">The user shouldn\'t contain numbers</string>
     <string name="hi">Hi,</string>
+    <string name="phone_number_length">El phone number must contain 10 numbers</string>
 </resources>

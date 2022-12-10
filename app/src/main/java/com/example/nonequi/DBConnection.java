@@ -9,9 +9,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBConnection extends SQLiteOpenHelper {
 
     public static final String DBName = "nonequi.db";
+    public static final String colNumber = "number";
+    public static final String colName = "username";
+    public static final String colCash = "cash";
 
-    public DBConnection(Context context) {
-        super(context, "nonequi.db", null, 1);
+    public static users usuarios = new users();
+
+
+    public DBConnection(Context context)     {
+        super(context, DBName, null, 1);
     }
 
     @Override
@@ -47,14 +53,14 @@ public class DBConnection extends SQLiteOpenHelper {
 
     }
 
-    public boolean checkIfUserExists(String user) {
+    /*public boolean checkIfUserExists(String user) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM users where username = ?", new String[]{user});
 
         if(cursor.getCount() > 0) return true;
         else return false;
 
-    }
+    }*/
 
     public boolean checkIfNumberExists(String number) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -72,5 +78,18 @@ public class DBConnection extends SQLiteOpenHelper {
         else return false;
     }
 
+    public void retrieveData(String number) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT username, cash FROM users where number = ?", new String[]{number});
 
+        if(cursor.moveToFirst()) {
+            String name = cursor.getString(0);
+            String cash = cursor.getString(1);
+
+            usuarios.setName(name);
+            usuarios.setCash(cash);
+        }
+
+        cursor.close();
+    }
 }

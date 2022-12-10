@@ -105,7 +105,7 @@ public class signUp extends AppCompatActivity {
 
     //Methods to check if data entered are correct
 
-    public boolean emailCorrect() {
+    private boolean emailCorrect() {
         String mail = email.getText().toString();
         Boolean checkEmailExists = DB.checkIfEmailExists(mail);
 
@@ -131,7 +131,7 @@ public class signUp extends AppCompatActivity {
         }
     }
 
-    public boolean passCorrect() {
+    private boolean passCorrect() {
         String pass = password.getText().toString();
         Pattern passRegex = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_,.:!¡?¿<>])(?=\\S+$).{8,}$");
 
@@ -151,9 +151,8 @@ public class signUp extends AppCompatActivity {
         }
     }
 
-    public boolean userCorrect() {
+    private boolean userCorrect() {
         String user = username.getText().toString();
-        Boolean checkUserExists = DB.checkIfUserExists(user);
         Pattern userRegex = Pattern.compile("^.{8,}$");
 
         if(user.isEmpty()) {
@@ -177,7 +176,7 @@ public class signUp extends AppCompatActivity {
         }
     }
 
-    public boolean numberCorrect() {
+    private boolean numberCorrect() {
         String number = phoneNumber.getText().toString();
         Boolean checkNumberExists = DB.checkIfNumberExists(number);
 
@@ -190,12 +189,20 @@ public class signUp extends AppCompatActivity {
             binding.InputPhoneNumberSP.setError("This number has already used");
             return false;
 
-        } else {
+        } else if(number.length() != 10){
+            Snackbar.make(findViewById(android.R.id.content), R.string.phone_number_length, Snackbar.LENGTH_SHORT).show();
+            binding.InputPhoneNumberSP.setError("Please enter a valid phone number");
+            return false;
+        } /*else if(!number.matches(".*[{1,10}].*")) {
+            Snackbar.make(findViewById(android.R.id.content), R.string.phone_number_length, Snackbar.LENGTH_SHORT).show();
+            binding.InputPhoneNumberSP.setError("Please enter a valid phone number - Te pasaste");
+            return false;
+        }*/ else {
             return true;
         }
     }
 
-    public boolean rPassCorrect() {
+    private boolean rPassCorrect() {
         String rpass = rpassword.getText().toString();
 
         if(rpass.isEmpty()) {

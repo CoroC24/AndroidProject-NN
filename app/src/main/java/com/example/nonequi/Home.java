@@ -2,16 +2,11 @@ package com.example.nonequi;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.DialogFragment;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -25,7 +20,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class Home extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
-    private TextView textViewTemp;
+    private TextView textViewName, textViewCash;
 
     private static final int TIME_INTERVAL = 2000;
     private long mBackPressed;
@@ -42,6 +37,9 @@ public class Home extends AppCompatActivity {
 
         DB = new DBConnection(this);
         sessionManagement = new sessionManagement(Home.this);
+
+        textViewName = binding.textViewName;
+        textViewCash = binding.textViewCash;
 
         MaterialToolbar toolBar = binding.topAppBar;
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -66,7 +64,8 @@ public class Home extends AppCompatActivity {
             }
         });
 
-
+        textViewName.setText(DBConnection.usuarios.getName());
+        textViewCash.setText(DBConnection.usuarios.getCash());
 
     }
 
@@ -84,9 +83,5 @@ public class Home extends AppCompatActivity {
         }
 
         mBackPressed = System.currentTimeMillis();
-    }
-
-    public void retrieveUser() {
-
     }
 }

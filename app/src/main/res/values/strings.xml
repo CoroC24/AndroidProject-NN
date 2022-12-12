@@ -28,7 +28,7 @@
     <string name="user_used">This user has already used</string>
     <string name="login_successfully">Login Successfully</string>
     <string name="login_failed">Login Failed</string>
-    <string name="user_not_exists">This user does not exists</string>
+    <string name="number_not_exists">This number does not exists</string>
     <string name="pass_regex_mayus">Password must contain at least one upper case character</string>
     <string name="pass_regex_minus">Password must contain at least one lower case character</string>
     <string name="pass_regex_number">Password must contain at least one number</string>
@@ -50,4 +50,13 @@
     <string name="send_money">Send Money</string>
     <string name="credit_card">Credit Card</string>
     <string name="history">History</string>
+    <string name="history_transaction">History of Transaction</string>
+    <string name="nonequi_card">NoNequi Credit Card</string>
+    <string name="money_available">Money Available</string>
+    <string name="how_much">How much money?</string>
+    <string name="transfer_money">Transfer Money</string>
+    <string name="insufficient_money">Insufficient money for this transaction</string>
+    <string name="confirm_transaction">Confirm Transaction</string>
+    <string name="transaction_success">Transaction Succes</string>
+    <string name="transaction_failed">Transaction Failed</string>
 </resources>

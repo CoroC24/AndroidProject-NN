@@ -6,4 +6,24 @@
     android:layout_height="match_parent"
     tools:context="Interfaces.ShowCard">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayoutSC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/toolBarColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarSC"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/toolBarColor"
+            app:navigationIcon="?attr/actionModeCloseDrawable"
+            app:title="@string/nonequi_card"
+            app:titleTextColor="#4C4C4C" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

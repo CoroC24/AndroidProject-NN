@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import Interfaces.SendMoney;
 import Login.Users;
 
 public class DBConnection extends SQLiteOpenHelper {
@@ -16,6 +17,8 @@ public class DBConnection extends SQLiteOpenHelper {
     public static final String colMoney = "money";
 
     public static Users users = new Users();
+    SendMoney sendMoney = new SendMoney();
+
 
 
     public DBConnection(Context context)     {
@@ -40,6 +43,7 @@ public class DBConnection extends SQLiteOpenHelper {
         values.put("username", username);
         values.put("password", password);
         values.put("email", email);
+        values.put("money", 0);
 
         long result = db.insert("users", null, values);
         if(result == -1) return false;
@@ -82,16 +86,47 @@ public class DBConnection extends SQLiteOpenHelper {
 
     public void retrieveData(String number) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT username, cash FROM users where number = ?", new String[]{number});
+        Cursor cursor = db.rawQuery("SELECT number, username, money FROM users where number = ?", new String[]{number});
 
         if(cursor.moveToFirst()) {
-            String name = cursor.getString(0);
-            String money = cursor.getString(1);
+            String numberPhone = cursor.getString(0);
+            String name = cursor.getString(1);
+            String money = cursor.getString(2);
 
+            users.setNumber(numberPhone);
             users.setName(name);
             users.setMoney(money);
         }
 
         cursor.close();
+    }
+
+    public boolean setRemainingMoney(int money) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("UPDATE users SET money = '"+ money +"' where number = ?", new String[]{users.getNumber()});
+
+        if(cursor.getCount() > 0 ) return true;
+        else return false;
+    }
+
+    public void retrieveDataTransaction(String number) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT money FROM users where number = ?", new String[]{number});
+
+        if(cursor.moveToFirst()) {
+            String money = cursor.getString(0);
+
+            users.setMoneyTransaction(money);
+        }
+
+        cursor.close();
+    }
+
+    public boolean setIncomingMoney(int money) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("UPDATE users SET money = '"+ money +"' where number = ?", new String[]{users.getNumberToSend()});
+
+        if(cursor.getCount() > 0 ) return true;
+        else return false;
     }
 }

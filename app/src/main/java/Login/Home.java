@@ -19,6 +19,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.Snackbar;
 
 import Interfaces.History;
+import Interfaces.KeepNumberManagement;
 import Interfaces.SendMoney;
 import Interfaces.ShowCard;
 
@@ -29,14 +30,12 @@ public class Home extends AppCompatActivity {
     private TextView textViewName, textViewMoney;
     private ImageButton transferMoneyButton, showCardButton, historyButton;
 
-    private String name = DBConnection.users.getName();
-    private String money = DBConnection.users.getMoney();
-
     private static final int TIME_INTERVAL = 2000;
     private long mBackPressed;
 
     DBConnection DB;
     sessionManagement sessionManagement;
+    KeepNumberManagement keepNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +46,7 @@ public class Home extends AppCompatActivity {
 
         DB = new DBConnection(this);
         sessionManagement = new sessionManagement(Home.this);
+        keepNumber = new KeepNumberManagement(this);
 
         textViewName = binding.textViewName;
         textViewMoney = binding.textViewMoney;
@@ -69,13 +69,18 @@ public class Home extends AppCompatActivity {
                     startActivity(intent);
 
                     sessionManagement.removeSession();
+                    keepNumber.removeNumberManagement();
                 }
                 return false;
             }
         });
 
-        textViewName.setText(name);
-        textViewMoney.setText(money);
+        String retrieveNumber = keepNumber.getNumberManagement();
+
+        DB.retrieveData(retrieveNumber);
+
+        textViewName.setText(DBConnection.users.getName());
+        textViewMoney.setText(DBConnection.users.getMoney());
 
 
         //Set actions to buttons
@@ -89,7 +94,6 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SendMoney.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
@@ -99,7 +103,6 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ShowCard.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
@@ -109,7 +112,6 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), History.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });

@@ -14,6 +14,7 @@ import com.example.nonequi.R;
 import com.example.nonequi.databinding.ActivitySignInBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+import Interfaces.KeepNumberManagement;
 import kotlin.collections.ArraysKt;
 
 public class SignIn extends AppCompatActivity {
@@ -24,6 +25,7 @@ public class SignIn extends AppCompatActivity {
 
     DBConnection DB;
     sessionManagement sessionManagement;
+    KeepNumberManagement keepNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class SignIn extends AppCompatActivity {
 
         DB = new DBConnection(this);
         sessionManagement = new sessionManagement(SignIn.this);
+        keepNumber = new KeepNumberManagement(SignIn.this);
 
         // Setting click listener
         clickableText.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +76,7 @@ public class SignIn extends AppCompatActivity {
                         password.setText("");
 
                         sessionManagement.saveSession(true);
+                        keepNumber.saveNumberManagement(number);
 
                     } else {
                         Toast.makeText(SignIn.this, R.string.login_failed, Toast.LENGTH_SHORT).show();
@@ -96,9 +100,9 @@ public class SignIn extends AppCompatActivity {
 
     private boolean numberExists() {
         String number = phoneNumber.getText().toString();
-        Boolean checkUserExists = DB.checkIfNumberExists(number);
+        Boolean checkNumberExists = DB.checkIfNumberExists(number);
 
-        if(!checkUserExists) {
+        if(!checkNumberExists) {
             return false;
         }else {
             return true;
@@ -118,7 +122,7 @@ public class SignIn extends AppCompatActivity {
         } else if (numberExists()) {
             if (!checkPassCorrect) {
 //                Toast.makeText(SignIn.this, R.string.incorrect_pass, Toast.LENGTH_SHORT).show();
-                Snackbar.make(findViewById(android.R.id.content), R.string.incorrect_pass, Toast.LENGTH_SHORT).show();
+                Snackbar.make(findViewById(android.R.id.content), R.string.incorrect_pass, Snackbar.LENGTH_SHORT).show();
                 binding.InputPassword.setError("Incorrect Password");
                 return false;
             }
@@ -138,7 +142,7 @@ public class SignIn extends AppCompatActivity {
             return false;
 
         } else if(!numberExists()){
-            Snackbar.make(findViewById(android.R.id.content), R.string.user_not_exists, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.number_not_exists, Snackbar.LENGTH_SHORT).show();
             binding.InputPhoneNumber.setError("Number not found");
             return false;
 
@@ -153,7 +157,4 @@ public class SignIn extends AppCompatActivity {
 
         return !ArraysKt.contains(result, false);
     }
-
-
-    //Method to get the number entered by the user
 }

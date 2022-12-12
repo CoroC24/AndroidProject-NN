@@ -29,7 +29,7 @@
     <string name="user_used">Este usuario ya se encuentra en uso</string>
     <string name="login_successfully">Ingreso Exitoso</string>
     <string name="login_failed">Ingreso Fallido</string>
-    <string name="user_not_exists">Este usuario no existe</string>
+    <string name="number_not_exists">Este número no existe</string>
     <string name="pass_regex_mayus">La contraseña debe tener al menos un  carácter  en mayúscula</string>
     <string name="pass_regex_number">La contraseña debe tener al menos un número</string>
     <string name="pass_regex_special_char">La contraseña debe tener al menos un carácter especial (@!¡#$.,+_)</string>
@@ -49,6 +49,15 @@
     <string name="hi">Hola,</string>
     <string name="phone_number_length">El número telefónico debe contener 10 números</string>
     <string name="send_money">Enviar Dinero</string>
-    <string name="credit_card">Tarjeta de Credito</string>
+    <string name="credit_card">"Tarjeta de Credito "</string>
     <string name="history">Historial</string>
+    <string name="nonequi_card">Tarjeta de Credito NoNequi</string>
+    <string name="history_transaction">Historial de Transacciones</string>
+    <string name="money_available">Dinero disponible</string>
+    <string name="how_much">¿Cuánto dinero?</string>
+    <string name="transfer_money">Transferir Dinero</string>
+    <string name="insufficient_money">Dinero insuficiente para esta transacción</string>
+    <string name="confirm_transaction">Confirmar Transacción</string>
+    <string name="transaction_success">Transacción exitosa</string>
+    <string name="transaction_failed">Transacción fallida</string>
 </resources>

@@ -88,7 +88,7 @@ public class signUp extends AppCompatActivity {
                         }
                     } else {
 //                        Toast.makeText(signUp.this, R.string.password_same, Toast.LENGTH_SHORT).show();
-                        Snackbar.make(findViewById(android.R.id.content), R.string.password_same, Toast.LENGTH_SHORT).show();
+                        Snackbar.make(findViewById(android.R.id.content), R.string.password_same, Snackbar.LENGTH_SHORT).show();
                         rpassword.setText("");
                         binding.InputRPasswordSP.setError("Incorrect Password");
                     }
@@ -118,14 +118,14 @@ public class signUp extends AppCompatActivity {
 
         } else if(checkEmailExists == true) {
 //            Toast.makeText(signUp.this, R.string.email_used, Toast.LENGTH_SHORT).show();
-            Snackbar.make(findViewById(android.R.id.content), R.string.email_used, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.email_used, Snackbar.LENGTH_SHORT).show();
             binding.InputEmailSP.setError("This email has already used");
             return false;
 
         } else if(!PatternsCompat.EMAIL_ADDRESS.matcher(mail).matches()) {
             binding.InputEmailSP.setError("Please enter a valid email address");
 //            Toast.makeText(signUp.this, R.string.valid_email, Toast.LENGTH_SHORT).show();
-            Snackbar.make(findViewById(android.R.id.content), R.string.valid_email, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.valid_email, Snackbar.LENGTH_SHORT).show();
             return false;
 
         } else {
@@ -196,11 +196,7 @@ public class signUp extends AppCompatActivity {
             Snackbar.make(findViewById(android.R.id.content), R.string.phone_number_length, Snackbar.LENGTH_SHORT).show();
             binding.InputPhoneNumberSP.setError("Please enter a valid phone number");
             return false;
-        } /*else if(!number.matches(".*[{1,10}].*")) {
-            Snackbar.make(findViewById(android.R.id.content), R.string.phone_number_length, Snackbar.LENGTH_SHORT).show();
-            binding.InputPhoneNumberSP.setError("Please enter a valid phone number - Te pasaste");
-            return false;
-        }*/ else {
+        } else {
             return true;
         }
     }
@@ -233,27 +229,27 @@ public class signUp extends AppCompatActivity {
         }
         if(!pass.matches(".*[A-Z].*")) {
 //            Toast.makeText(signUp.this, R.string.pass_regex_mayus, Toast.LENGTH_SHORT).show();
-            Snackbar.make(findViewById(android.R.id.content), R.string.pass_regex_mayus, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.pass_regex_mayus, Snackbar.LENGTH_SHORT).show();
             return;
         }
         if(!pass.matches(".*[0-9].*")) {
 //            Toast.makeText(signUp.this, R.string.pass_regex_number, Toast.LENGTH_SHORT).show();
-            Snackbar.make(findViewById(android.R.id.content), R.string.pass_regex_number, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.pass_regex_number, Snackbar.LENGTH_SHORT).show();
             return;
         }
         if(!pass.matches(".*[@#$%^&+=_,.:!¡?¿<>].*")) {
 //            Toast.makeText(signUp.this, R.string.pass_regex_special_char, Toast.LENGTH_SHORT).show();
-            Snackbar.make(findViewById(android.R.id.content), R.string.pass_regex_special_char, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.pass_regex_special_char, Snackbar.LENGTH_SHORT).show();
             return;
         }
         if(!pass.matches(".*[{8,}].*")) {
 //            Toast.makeText(signUp.this, R.string.pass_regex_length, Toast.LENGTH_SHORT).show();
-            Snackbar.make(findViewById(android.R.id.content), R.string.pass_regex_length, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.pass_regex_length, Snackbar.LENGTH_SHORT).show();
             return;
         }
         if(pass.matches(".*[(?=\\S+$)].*")) {
 //            Toast.makeText(signUp.this, R.string.pass_regex_spaces, Toast.LENGTH_SHORT).show();
-            Snackbar.make(findViewById(android.R.id.content), R.string.pass_regex_spaces, Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.pass_regex_spaces, Snackbar.LENGTH_SHORT).show();
             return;
         }
 
@@ -263,8 +259,7 @@ public class signUp extends AppCompatActivity {
         String user = username.getText().toString();
 
         if (user.matches(".*[0-9].*")) {
-            Snackbar.make(findViewById(android.R.id.content), R.string.user_regex_number, Toast.LENGTH_SHORT).show();
-            return;
+            Snackbar.make(findViewById(android.R.id.content), R.string.user_regex_number, Snackbar.LENGTH_SHORT).show();
         }
     }
 }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="Interfaces.SendMoney">
+    tools:context="Interfaces.SendMoney"
+    android:background="@color/backgroundColorDark">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayoutSM"
@@ -19,10 +20,10 @@
             android:id="@+id/topAppBarSM"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/toolBarColor"
+            android:background="@color/toolBarColorDark"
             app:navigationIcon="?attr/actionModeCloseDrawable"
             app:title="@string/send_money"
-            app:titleTextColor="#4C4C4C" />
+            app:titleTextColor="#E1E1E1" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -33,7 +34,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="@string/money_available"
-        android:textColor="#4C4C4C"
+        android:textColor="#E1E1E1"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayoutSM" />
@@ -46,7 +47,7 @@
         android:layout_marginTop="3dp"
         android:text="$"
         android:textSize="16sp"
-        android:textColor="#4C4C4C"
+        android:textColor="#E1E1E1"
         app:layout_constraintStart_toStartOf="@+id/textViewMoneyAvailable"
         app:layout_constraintTop_toBottomOf="@+id/textViewMoneyAvailable" />
 
@@ -59,7 +60,7 @@
         android:paddingStart="3dp"
         android:text=""
         android:textSize="16sp"
-        android:textColor="#4C4C4C"
+        android:textColor="#E1E1E1"
         app:layout_constraintStart_toEndOf="@+id/textViewDollar"
         app:layout_constraintTop_toBottomOf="@+id/textViewMoneyAvailable" />
 
@@ -122,9 +123,9 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginBottom="85dp"
-        android:background="@drawable/style_button"
+        android:background="@drawable/style_button_fill"
         android:text="@string/transfer_money"
-        android:textColor="@color/selector"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"

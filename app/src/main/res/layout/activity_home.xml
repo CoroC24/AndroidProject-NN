@@ -26,7 +26,8 @@
             android:background="@color/toolBarColor"
             app:menu="@menu/menu_style"
             app:navigationIcon="?attr/actionModeCloseDrawable"
-            app:title="@string/app_name" />
+            app:title="@string/app_name"
+            app:titleTextColor="#4C4C4C"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -49,7 +50,6 @@
         android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:paddingEnd="10dp"
         android:text=""
@@ -82,7 +82,7 @@
         android:layout_marginTop="5dp"
         android:paddingEnd="5dp"
         android:layout_marginStart="2dp"
-        android:text=""
+        android:text="0"
         android:textColor="#4C4C4C"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@id/textView2"
@@ -130,9 +130,9 @@
         android:id="@+id/textViewSendMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:text="@string/send_money"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/transferMoney"
+        app:layout_constraintStart_toStartOf="@+id/transferMoney"
         app:layout_constraintTop_toBottomOf="@+id/transferMoney">
 
     </TextView>
@@ -142,9 +142,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/credit_card"
-        app:layout_constraintEnd_toStartOf="@+id/textViewHistory"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toEndOf="@+id/textViewSendMoney"
+        app:layout_constraintEnd_toEndOf="@+id/showCard"
+        app:layout_constraintStart_toStartOf="@+id/showCard"
         app:layout_constraintTop_toBottomOf="@+id/showCard">
 
     </TextView>
@@ -153,9 +152,9 @@
         android:id="@+id/textViewHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="42dp"
         android:text="@string/history"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/histoyTransactions"
+        app:layout_constraintStart_toStartOf="@+id/histoyTransactions"
         app:layout_constraintTop_toBottomOf="@+id/histoyTransactions">
 
     </TextView>

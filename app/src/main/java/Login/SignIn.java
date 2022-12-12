@@ -1,4 +1,4 @@
-package com.example.nonequi;
+package Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nonequi.DBConnection;
+import com.example.nonequi.R;
 import com.example.nonequi.databinding.ActivitySignInBinding;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -57,7 +59,7 @@ public class SignIn extends AppCompatActivity {
                 if(validateData()) {
                     Boolean consult = DB.checkUserPassword(number, pass);
 
-                    DBConnection.usuarios.setNumber(number);
+                    DBConnection.users.setNumber(number);
                     DB.retrieveData(number);
 
                     if(consult == true) {

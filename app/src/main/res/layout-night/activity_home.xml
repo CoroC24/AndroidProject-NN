@@ -6,8 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/backLayout"
     android:background="@color/backgroundColorDark"
-    tools:context=".Home">
-
+    tools:context="Login.Home">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -36,10 +35,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:text="@string/hi"
         android:textAlignment="textStart"
         android:textColor="#E1E1E1"
-        android:textSize="20sp"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
@@ -48,11 +49,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
         android:paddingStart="8dp"
-        android:text="Temporal Text"
+        android:text=""
         android:textAlignment="textStart"
         android:textColor="#E1E1E1"
-        android:textSize="20sp"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView"
@@ -64,25 +66,98 @@
         android:layout_height="wrap_content"
         android:paddingStart="8dp"
         android:paddingEnd="2dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
         android:text="$"
         android:textColor="#E1E1E1"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
-        android:id="@+id/textViewCash"
+        android:id="@+id/textViewMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:paddingEnd="5dp"
         android:layout_marginStart="2dp"
-        android:text="1000000"
+        android:text=""
         android:textColor="#E1E1E1"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+
+
+    <ImageButton
+        android:id="@+id/showCard"
+        android:layout_width="97dp"
+        android:layout_height="107dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/backgroundColorDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/histoyTransactions"
+        app:layout_constraintStart_toEndOf="@+id/transferMoney"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.454"
+        app:srcCompat="@drawable/card_nightmode" />
+
+    <ImageButton
+        android:id="@+id/transferMoney"
+        android:layout_width="97dp"
+        android:layout_height="107dp"
+        android:layout_marginStart="16dp"
+        android:background="@color/backgroundColorDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.454"
+        app:srcCompat="@drawable/transfer_money_nightmode" />
+
+    <ImageButton
+        android:id="@+id/histoyTransactions"
+        android:layout_width="97dp"
+        android:layout_height="107dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/backgroundColorDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.454"
+        app:srcCompat="@drawable/history_nightmode"/>
+
+    <TextView
+        android:id="@+id/textViewSendMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="@string/send_money"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transferMoney">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/textViewCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/credit_card"
+        app:layout_constraintEnd_toStartOf="@+id/textViewHistory"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toEndOf="@+id/textViewSendMoney"
+        app:layout_constraintTop_toBottomOf="@+id/showCard">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/textViewHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="42dp"
+        android:text="@string/history"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/histoyTransactions">
+
+    </TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

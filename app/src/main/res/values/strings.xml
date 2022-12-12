@@ -47,4 +47,7 @@
     <string name="user_regex_number">The user shouldn\'t contain numbers</string>
     <string name="hi">Hi,</string>
     <string name="phone_number_length">El phone number must contain 10 numbers</string>
+    <string name="send_money">Send Money</string>
+    <string name="credit_card">Credit Card</string>
+    <string name="history">History</string>
 </resources>

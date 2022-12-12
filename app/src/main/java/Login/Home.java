@@ -1,26 +1,36 @@
-package com.example.nonequi;
+package Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.nonequi.DBConnection;
+import com.example.nonequi.ExitAlertDialog;
+import com.example.nonequi.R;
 import com.example.nonequi.databinding.ActivityHomeBinding;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.Snackbar;
+
+import Interfaces.History;
+import Interfaces.SendMoney;
+import Interfaces.ShowCard;
 
 
 public class Home extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
-    private TextView textViewName, textViewCash;
+    private TextView textViewName, textViewMoney;
+    private ImageButton transferMoneyButton, showCardButton, historyButton;
+
+    private String name = DBConnection.users.getName();
+    private String money = DBConnection.users.getMoney();
 
     private static final int TIME_INTERVAL = 2000;
     private long mBackPressed;
@@ -39,7 +49,7 @@ public class Home extends AppCompatActivity {
         sessionManagement = new sessionManagement(Home.this);
 
         textViewName = binding.textViewName;
-        textViewCash = binding.textViewCash;
+        textViewMoney = binding.textViewMoney;
 
         MaterialToolbar toolBar = binding.topAppBar;
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -64,8 +74,45 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        textViewName.setText(DBConnection.usuarios.getName());
-        textViewCash.setText(DBConnection.usuarios.getCash());
+        textViewName.setText(name);
+        textViewMoney.setText(money);
+
+
+        //Set actions to buttons
+
+        transferMoneyButton = binding.transferMoney;
+        showCardButton = binding.showCard;
+        historyButton = binding.histoyTransactions;
+
+        transferMoneyButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SendMoney.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        showCardButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ShowCard.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        historyButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), History.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
 
     }
 

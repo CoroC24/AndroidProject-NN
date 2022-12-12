@@ -1,20 +1,19 @@
-package com.example.nonequi;
+package Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AnticipateInterpolator;
-import android.widget.Toast;
 
 import androidx.core.splashscreen.SplashScreen;
+
+import com.example.nonequi.R;
 
 
 public class Welcome extends AppCompatActivity {

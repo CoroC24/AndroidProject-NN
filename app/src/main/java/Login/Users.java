@@ -1,9 +1,9 @@
-package com.example.nonequi;
+package Login;
 
-public class users {
+public class Users {
     private String number;
     private String name;
-    private String cash;
+    private String money;
 
     public String getNumber() {
         return number;
@@ -21,11 +21,11 @@ public class users {
         this.name = name;
     }
 
-    public String getCash() {
-        return cash;
+    public String getMoney() {
+        return money;
     }
 
-    public void setCash(String cash) {
-        this.cash = cash;
+    public void setMoney(String money) {
+        this.money = money;
     }
 }

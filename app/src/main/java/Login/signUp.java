@@ -1,4 +1,4 @@
-package com.example.nonequi;
+package Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.util.PatternsCompat;
@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.regex.Pattern;
+
+import com.example.nonequi.DBConnection;
+import com.example.nonequi.R;
 import com.example.nonequi.databinding.ActivitySignUpBinding;
 import com.google.android.material.snackbar.Snackbar;
 

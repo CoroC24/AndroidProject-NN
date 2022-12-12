@@ -1,4 +1,4 @@
-package com.example.nonequi;
+package Login;
 
 import android.content.Context;
 import android.content.SharedPreferences;

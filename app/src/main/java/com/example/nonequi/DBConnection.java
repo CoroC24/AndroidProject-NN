@@ -6,14 +6,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import Login.Users;
+
 public class DBConnection extends SQLiteOpenHelper {
 
     public static final String DBName = "nonequi.db";
     public static final String colNumber = "number";
     public static final String colName = "username";
-    public static final String colCash = "cash";
+    public static final String colMoney = "money";
 
-    public static users usuarios = new users();
+    public static Users users = new Users();
 
 
     public DBConnection(Context context)     {
@@ -22,7 +24,7 @@ public class DBConnection extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table users(number INT primary key, username TEXT , password TEXT, email TEXT, cash INT)");
+        db.execSQL("create table users(number INT primary key, username TEXT , password TEXT, email TEXT, money INT)");
     }
 
     @Override
@@ -84,10 +86,10 @@ public class DBConnection extends SQLiteOpenHelper {
 
         if(cursor.moveToFirst()) {
             String name = cursor.getString(0);
-            String cash = cursor.getString(1);
+            String money = cursor.getString(1);
 
-            usuarios.setName(name);
-            usuarios.setCash(cash);
+            users.setName(name);
+            users.setMoney(money);
         }
 
         cursor.close();

@@ -96,8 +96,13 @@ public class SendMoney extends AppCompatActivity {
             binding.InputPhoneNumberSM.setError("Number not found");
             return false;
 
+        } else if(number.equals(DBConnection.users.getNumber())) {
+            Snackbar.make(findViewById(android.R.id.content), R.string.your_number, Snackbar.LENGTH_SHORT).show();
+            binding.InputPhoneNumberSM.setError("This is your number");
+            return false;
+
         } else {
-            DBConnection.users.setNumberToSend(number);
+            DBConnection.users.setNumberToReceiver(number);
             DB.retrieveDataTransaction(number);
 
             binding.InputPhoneNumberSM.setError(null);
@@ -163,13 +168,24 @@ public class SendMoney extends AppCompatActivity {
 
             if(consult == true && consult2 == true) {
                 Toast.makeText(SendMoney.this, R.string.transaction_success, Toast.LENGTH_SHORT).show();
-                moneyToSend.setText("");
-                phoneNumber.setText("");
+
+                DB.insertDataHistory(DBConnection.users.getNumber(), DBConnection.users.getName(), DBConnection.users.getNumberToReceiver(), DBConnection.users.getNameToReceiver(), DBConnection.users.getMoneyTransaction());
+                DB.retrieveData(DBConnection.users.getNumber());
+                textViewMoney.setText(DBConnection.users.getMoney());
             } else {
                 Toast.makeText(SendMoney.this, R.string.transaction_failed, Toast.LENGTH_SHORT).show();
-                moneyToSend.setText("");
-                phoneNumber.setText("");
             }
+
+            clearFields();
         }
+    }
+
+    //Method to clear fields
+
+    public void clearFields() {
+        binding.InputMoneyToSendSM.setError(null);
+        binding.InputPhoneNumberSM.setError(null);
+        moneyToSend.setText("");
+        phoneNumber.setText("");
     }
 }

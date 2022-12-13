@@ -17,6 +17,7 @@ import com.example.nonequi.databinding.ActivitySignUpBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 import kotlin.collections.ArraysKt;
+import saveInSharedPreferences.sessionManagement;
 
 public class signUp extends AppCompatActivity {
 
@@ -25,7 +26,7 @@ public class signUp extends AppCompatActivity {
     private TextView clickableText;
 
     DBConnection DB;
-    sessionManagement sessionManagement;
+    saveInSharedPreferences.sessionManagement sessionManagement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

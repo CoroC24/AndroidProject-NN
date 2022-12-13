@@ -14,8 +14,10 @@ import com.example.nonequi.R;
 import com.example.nonequi.databinding.ActivitySignInBinding;
 import com.google.android.material.snackbar.Snackbar;
 
-import Interfaces.KeepNumberManagement;
+import Interfaces.Home;
+import saveInSharedPreferences.KeepNumberManagement;
 import kotlin.collections.ArraysKt;
+import saveInSharedPreferences.sessionManagement;
 
 public class SignIn extends AppCompatActivity {
 
@@ -24,7 +26,7 @@ public class SignIn extends AppCompatActivity {
     private EditText phoneNumber, password;
 
     DBConnection DB;
-    sessionManagement sessionManagement;
+    saveInSharedPreferences.sessionManagement sessionManagement;
     KeepNumberManagement keepNumber;
 
     @Override

@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/backLayout"
     android:background="@color/backgroundColorDark"
-    tools:context="Login.Home">
+    tools:context="Interfaces.Home">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"

@@ -37,7 +37,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="Login.Home"
+            android:name="Interfaces.Home"
             android:exported="false"
             android:theme="@style/Theme.NoNequi">
             <meta-data

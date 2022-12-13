@@ -1,4 +1,4 @@
-package Login;
+package saveInSharedPreferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;

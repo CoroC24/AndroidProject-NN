@@ -15,6 +15,9 @@ import androidx.core.splashscreen.SplashScreen;
 
 import com.example.nonequi.R;
 
+import Interfaces.Home;
+import saveInSharedPreferences.sessionManagement;
+
 
 public class Welcome extends AppCompatActivity {
 

@@ -26,8 +26,7 @@ public class TransactionAlertDialog extends DialogFragment {
 
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                /*sendMoney.phoneNumber.setText("");
-                sendMoney.moneyToSend.setText("");*/
+                ((SendMoney) getActivity()).clearFields();
 
                 dialogInterface.cancel();
             }

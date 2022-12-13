@@ -60,4 +60,7 @@
     <string name="confirm_transaction">Confirmar Transacción</string>
     <string name="transaction_success">Transacción exitosa</string>
     <string name="transaction_failed">Transacción fallida</string>
+    <string name="by">De</string>
+    <string name="for_text">Para</string>
+    <string name="your_number">Este es tú número. No puedes enviarte dinero a ti mismo</string>
 </resources>

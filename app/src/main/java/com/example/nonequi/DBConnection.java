@@ -6,19 +6,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import Interfaces.SendMoney;
 import Login.Users;
 
 public class DBConnection extends SQLiteOpenHelper {
 
     public static final String DBName = "nonequi.db";
-    public static final String colNumber = "number";
-    public static final String colName = "username";
-    public static final String colMoney = "money";
-
     public static Users users = new Users();
-    SendMoney sendMoney = new SendMoney();
-
+    public static HistoryTransactionList history = new HistoryTransactionList();
+    public final int moneyTemp = 0;
 
 
     public DBConnection(Context context)     {
@@ -28,11 +23,13 @@ public class DBConnection extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table users(number INT primary key, username TEXT , password TEXT, email TEXT, money INT)");
+        db.execSQL("create table history(numberSender INT, sender TEXT, numberReceiver INT, receiver TEXT, money INT, date DATETIME DEFAULT CURRENT_TIMESTAMP)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("drop table if exists users");
+        db.execSQL("drop table if exists history");
     }
 
     public boolean insertData(String number,String username, String password, String email) {
@@ -43,11 +40,24 @@ public class DBConnection extends SQLiteOpenHelper {
         values.put("username", username);
         values.put("password", password);
         values.put("email", email);
-        values.put("money", 0);
+        values.put("money", moneyTemp);
 
         long result = db.insert("users", null, values);
         if(result == -1) return false;
         else return true;
+    }
+
+    public void insertDataHistory(String numberSender, String sender, String numberReceiver, String receiver, String money) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("numberSender", numberSender);
+        values.put("sender", sender);
+        values.put("numberReceiver", numberReceiver);
+        values.put("receiver", receiver);
+        values.put("money", money);
+
+        db.insert("history", null, values);
     }
 
     public boolean checkIfEmailExists(String email) {
@@ -58,15 +68,6 @@ public class DBConnection extends SQLiteOpenHelper {
         else return false;
 
     }
-
-    /*public boolean checkIfUserExists(String user) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM users where username = ?", new String[]{user});
-
-        if(cursor.getCount() > 0) return true;
-        else return false;
-
-    }*/
 
     public boolean checkIfNumberExists(String number) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -111,12 +112,14 @@ public class DBConnection extends SQLiteOpenHelper {
 
     public void retrieveDataTransaction(String number) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT money FROM users where number = ?", new String[]{number});
+        Cursor cursor = db.rawQuery("SELECT username, money FROM users where number = ?", new String[]{number});
 
         if(cursor.moveToFirst()) {
-            String money = cursor.getString(0);
+            String money = cursor.getString(1);
+            String name = cursor.getString(0);
 
             users.setMoneyTransaction(money);
+            users.setNameToReceiver(name);
         }
 
         cursor.close();
@@ -124,9 +127,35 @@ public class DBConnection extends SQLiteOpenHelper {
 
     public boolean setIncomingMoney(int money) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("UPDATE users SET money = '"+ money +"' where number = ?", new String[]{users.getNumberToSend()});
+        Cursor cursor = db.rawQuery("UPDATE users SET money = '"+ money +"' where number = ?", new String[]{users.getNumberToReceiver()});
 
         if(cursor.isAfterLast()) return true;
         else return false;
+    }
+
+
+    //Method to retrieve data to recyclerview history
+
+    public void retrieveDataToHistory() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT numberSender, sender, numberReceiver, receiver, money, date FROM history where number = ?", new String[]{users.getNumber()});
+
+        if(cursor.moveToFirst()) {
+            String numberSender = cursor.getString(0);
+            String nameSender = cursor.getString(1);
+            String numberReceiver = cursor.getString(2);
+            String nameReceiver = cursor.getString(3);
+            String money = cursor.getString(4);
+            String date = cursor.getString(5);
+
+            history.setNumberSender(numberSender);
+            history.setNumberReceiver(numberReceiver);
+            history.setNameReceiver(nameReceiver);
+            history.setNameSender(nameSender);
+            history.setMoneyHTL(money);
+            history.setDate(date);
+        }
+
+        cursor.close();
     }
 }

@@ -1,4 +1,4 @@
-package Login;
+package Interfaces;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -18,10 +18,9 @@ import com.example.nonequi.databinding.ActivityHomeBinding;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.Snackbar;
 
-import Interfaces.History;
-import Interfaces.KeepNumberManagement;
-import Interfaces.SendMoney;
-import Interfaces.ShowCard;
+import Login.Welcome;
+import saveInSharedPreferences.KeepNumberManagement;
+import saveInSharedPreferences.sessionManagement;
 
 
 public class Home extends AppCompatActivity {
@@ -34,7 +33,7 @@ public class Home extends AppCompatActivity {
     private long mBackPressed;
 
     DBConnection DB;
-    sessionManagement sessionManagement;
+    saveInSharedPreferences.sessionManagement sessionManagement;
     KeepNumberManagement keepNumber;
 
     @Override
@@ -119,6 +118,7 @@ public class Home extends AppCompatActivity {
     }
 
 
+    //Method to give action to back button
 
     @Override
     public void  onBackPressed() {
@@ -132,5 +132,15 @@ public class Home extends AppCompatActivity {
         }
 
         mBackPressed = System.currentTimeMillis();
+    }
+
+    //Method to update money in home
+
+    @Override
+    protected void onPostResume() {
+
+        super.onPostResume();
+        DB.retrieveData(DBConnection.users.getNumber());
+        textViewMoney.setText(DBConnection.users.getMoney());
     }
 }

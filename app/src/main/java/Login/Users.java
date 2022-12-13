@@ -4,8 +4,10 @@ public class Users {
     private String number;
     private String name;
     private String money;
-    private String numberToSend;
+    private String numberToReceiver;
+    private String nameToReceiver;
     private String moneyTransaction;
+
 
     public String getNumber() {
         return number;
@@ -31,12 +33,12 @@ public class Users {
         this.money = money;
     }
 
-    public String getNumberToSend() {
-        return numberToSend;
+    public String getNumberToReceiver() {
+        return numberToReceiver;
     }
 
-    public void setNumberToSend(String numberToSend) {
-        this.numberToSend = numberToSend;
+    public void setNumberToReceiver(String numberToReceiver) {
+        this.numberToReceiver = numberToReceiver;
     }
 
     public String getMoneyTransaction() {
@@ -46,4 +48,13 @@ public class Users {
     public void setMoneyTransaction(String moneyTransaction) {
         this.moneyTransaction = moneyTransaction;
     }
+
+    public String getNameToReceiver() {
+        return nameToReceiver;
+    }
+
+    public void setNameToReceiver(String nameToReceiver) {
+        this.nameToReceiver = nameToReceiver;
+    }
+
 }

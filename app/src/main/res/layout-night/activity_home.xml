@@ -25,7 +25,8 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/toolBarColorDark"
             app:menu="@menu/menu_style"
-            app:navigationIcon="?attr/actionModeCloseDrawable"
+            app:navigationIcon="@drawable/arrow_back"
+            app:navigationIconTint="#B8B8B8"
             app:title="@string/app_name"
             app:titleTextColor="#E1E1E1"/>
 

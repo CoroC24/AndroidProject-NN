@@ -75,6 +75,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="108dp"
                 android:inputType="textPassword"
+                android:maxLines="1"
                 app:layout_constraintTop_toBottomOf="@+id/subtitle"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
                 tools:layout_editor_absoluteX="20dp" />
@@ -115,6 +116,8 @@
                 android:layout_marginTop="24dp"
                 android:inputType="number"
                 android:minHeight="48dp"
+                android:maxLength="10"
+                android:maxLines="1"
                 app:layout_constraintTop_toBottomOf="@+id/subtitle"
                 tools:ignore="SpeakableTextPresentCheck"
                 tools:layout_editor_absoluteX="20dp" />

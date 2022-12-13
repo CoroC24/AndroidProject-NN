@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/toolBarColor"
-            app:navigationIcon="?attr/actionModeCloseDrawable"
+            app:navigationIcon="@drawable/arrow_back"
             app:title="@string/send_money"
             app:titleTextColor="#4C4C4C" />
 
@@ -86,6 +86,8 @@
             android:layout_marginTop="24dp"
             android:inputType="number"
             android:minHeight="48dp"
+            android:maxLength="10"
+            android:maxLines="1"
             tools:ignore="SpeakableTextPresentCheck"
             tools:layout_editor_absoluteX="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -112,6 +114,7 @@
             android:layout_height="match_parent"
             android:inputType="number"
             android:minHeight="48dp"
+            android:maxLines="1"
             tools:ignore="SpeakableTextPresentCheck"
             tools:layout_editor_absoluteX="20dp"
             tools:layout_editor_absoluteY="659dp" />

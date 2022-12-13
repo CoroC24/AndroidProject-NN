@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/toolBarColor"
-            app:navigationIcon="?attr/actionModeCloseDrawable"
+            app:navigationIcon="@drawable/arrow_back"
             app:title="@string/nonequi_card"
             app:titleTextColor="#4C4C4C" />
 

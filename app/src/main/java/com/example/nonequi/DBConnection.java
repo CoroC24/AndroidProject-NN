@@ -105,7 +105,7 @@ public class DBConnection extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("UPDATE users SET money = '"+ money +"' where number = ?", new String[]{users.getNumber()});
 
-        if(cursor.getCount() > 0 ) return true;
+        if(cursor.isAfterLast()) return true;
         else return false;
     }
 
@@ -126,7 +126,7 @@ public class DBConnection extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("UPDATE users SET money = '"+ money +"' where number = ?", new String[]{users.getNumberToSend()});
 
-        if(cursor.getCount() > 0 ) return true;
+        if(cursor.isAfterLast()) return true;
         else return false;
     }
 }

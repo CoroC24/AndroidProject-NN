@@ -9,6 +9,14 @@ public class HistoryTransactionList {
     public String moneyHTL;
     public String date;
 
+    public HistoryTransactionList(String numberSender, String nameSender, String numberReceiver, String nameReceiver, String moneyHTL, String date) {
+        this.nameSender = nameSender;
+        this.nameReceiver = nameReceiver;
+        this.numberSender = numberSender;
+        this.numberReceiver = numberReceiver;
+        this.moneyHTL = moneyHTL;
+        this.date = date;
+    }
 
     public String getNameSender() {
         return nameSender;

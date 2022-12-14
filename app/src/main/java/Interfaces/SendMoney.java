@@ -169,7 +169,7 @@ public class SendMoney extends AppCompatActivity {
             if(consult == true && consult2 == true) {
                 Toast.makeText(SendMoney.this, R.string.transaction_success, Toast.LENGTH_SHORT).show();
 
-                DB.insertDataHistory(DBConnection.users.getNumber(), DBConnection.users.getName(), DBConnection.users.getNumberToReceiver(), DBConnection.users.getNameToReceiver(), DBConnection.users.getMoneyTransaction());
+                DB.insertDataHistory(DBConnection.users.getNumber(), DBConnection.users.getName(), DBConnection.users.getNumberToReceiver(), DBConnection.users.getNameToReceiver(), money);
                 DB.retrieveData(DBConnection.users.getNumber());
                 textViewMoney.setText(DBConnection.users.getMoney());
             } else {

@@ -12,7 +12,7 @@
     app:cardCornerRadius="20dp"
     app:cardElevation="4dp"
     app:cardUseCompatPadding="true"
-    android:background="@color/backgroundColor">
+    android:background="@color/backgroundColorDark">
 
     <LinearLayout
         android:id="@+id/linearLayoutIncoming"
@@ -54,7 +54,7 @@
                     android:layout_marginEnd="3dp"
                     android:layout_toStartOf="@+id/textViewMoneyHistory"
                     android:text="$"
-                    android:textColor="#4c4c4c"
+                    android:textColor="#E1E1E1"
                     android:textStyle="bold" />
 
                 <TextView
@@ -64,7 +64,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="15dp"
                     android:text="0"
-                    android:textColor="#4c4c4c"
+                    android:textColor="#E1E1E1"
                     android:textStyle="bold" />
             </RelativeLayout>
         </RelativeLayout>
@@ -97,7 +97,7 @@
                     android:layout_marginStart="7dp"
                     android:paddingVertical="2dp"
                     android:text="Julanito"
-                    android:textColor="#4c4c4c"
+                    android:textColor="#E1E1E1"
                     android:layout_toEndOf="@id/textViewBy"
                     android:layout_centerVertical="true" />
 

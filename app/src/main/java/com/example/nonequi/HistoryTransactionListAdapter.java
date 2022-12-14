@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -49,7 +50,7 @@ public class HistoryTransactionListAdapter extends RecyclerView.Adapter<HistoryT
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageTransactionIncoming;
         TextView name, money, by_for;
-        LinearLayout linearLayoutTransactions;
+        CardView cardView;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -58,26 +59,32 @@ public class HistoryTransactionListAdapter extends RecyclerView.Adapter<HistoryT
             name = itemView.findViewById(R.id.textViewPersonName);
             money = itemView.findViewById(R.id.textViewMoneyHistory);
             by_for = itemView.findViewById(R.id.textViewBy);
-            linearLayoutTransactions = itemView.findViewById(R.id.linearLayoutIncoming);
+            cardView = itemView.findViewById(R.id.cardView);
         }
 
         void bindData(final HistoryTransactionList item) {
             name.setText(item.getNameSender());
             money.setText(item.getMoneyHTL());
 
-            /*if(Objects.equals(item.getNameSender(), DBConnection.users.getName())) {
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            if(Objects.equals(item.getNameSender(), DBConnection.users.getName())) {
+                CardView.LayoutParams layoutParams = new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.WRAP_CONTENT);
 
-                layoutParams.setMargins(60, 0, 0, 0);
-                linearLayoutTransactions.setLayoutParams(layoutParams);
+                layoutParams.setMargins(160, 0, 10, 0);
+                cardView.setLayoutParams(layoutParams);
 
-
+                by_for.setText(R.string.for_text);
+                name.setText(item.getNameReceiver());
+                imageTransactionIncoming.setImageResource(R.drawable.money_leaving);
 
             } else {
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                layoutParams.setMargins(0, 0, 60, 0);
-                linearLayoutTransactions.setLayoutParams(layoutParams);
-            }*/
+                CardView.LayoutParams layoutParams = new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.WRAP_CONTENT);
+                layoutParams.setMargins(0, 0, 160, 0);
+                cardView.setLayoutParams(layoutParams);
+
+                by_for.setText(R.string.by);
+                name.setText(item.getNameSender());
+                imageTransactionIncoming.setImageResource(R.drawable.money_incoming);
+            }
 
         }
     }

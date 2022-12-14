@@ -12,7 +12,7 @@ public class DBConnection extends SQLiteOpenHelper {
 
     public static final String DBName = "nonequi.db";
     public static Users users = new Users();
-    public static HistoryTransactionList history = new HistoryTransactionList();
+//    public static HistoryTransactionList history = new HistoryTransactionList();
     public final int moneyTemp = 0;
 
 
@@ -103,7 +103,7 @@ public class DBConnection extends SQLiteOpenHelper {
     }
 
     public boolean setRemainingMoney(int money) {
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("UPDATE users SET money = '"+ money +"' where number = ?", new String[]{users.getNumber()});
 
         if(cursor.isAfterLast()) return true;
@@ -126,7 +126,7 @@ public class DBConnection extends SQLiteOpenHelper {
     }
 
     public boolean setIncomingMoney(int money) {
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("UPDATE users SET money = '"+ money +"' where number = ?", new String[]{users.getNumberToReceiver()});
 
         if(cursor.isAfterLast()) return true;
@@ -136,26 +136,10 @@ public class DBConnection extends SQLiteOpenHelper {
 
     //Method to retrieve data to recyclerview history
 
-    public void retrieveDataToHistory() {
+    public Cursor retrieveDataToHistory() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT numberSender, sender, numberReceiver, receiver, money, date FROM history where number = ?", new String[]{users.getNumber()});
+        Cursor cursor = db.rawQuery("SELECT * FROM history where numberSender = ? or numberReceiver = ?", new String[]{users.getNumber(), users.getNumber()});
 
-        if(cursor.moveToFirst()) {
-            String numberSender = cursor.getString(0);
-            String nameSender = cursor.getString(1);
-            String numberReceiver = cursor.getString(2);
-            String nameReceiver = cursor.getString(3);
-            String money = cursor.getString(4);
-            String date = cursor.getString(5);
-
-            history.setNumberSender(numberSender);
-            history.setNumberReceiver(numberReceiver);
-            history.setNameReceiver(nameReceiver);
-            history.setNameSender(nameSender);
-            history.setMoneyHTL(money);
-            history.setDate(date);
-        }
-
-        cursor.close();
+        return cursor;
     }
 }

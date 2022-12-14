@@ -15,7 +15,7 @@ import androidx.core.splashscreen.SplashScreen;
 
 import com.example.nonequi.R;
 
-import Interfaces.Home;
+import Interfaces.Home.Home;
 import saveInSharedPreferences.sessionManagement;
 
 
@@ -23,9 +23,9 @@ public class Welcome extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+//        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        /*setContentView(R.layout.activity_main);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             getSplashScreen().setOnExitAnimationListener(splashScreenView -> {
@@ -49,7 +49,7 @@ public class Welcome extends AppCompatActivity {
             });
         }
 
-        splashScreen.setKeepOnScreenCondition(() -> false );
+        splashScreen.setKeepOnScreenCondition(() -> false );*/
     }
 
     protected void onStart() {

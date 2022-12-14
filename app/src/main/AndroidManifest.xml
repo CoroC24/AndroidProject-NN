@@ -13,7 +13,7 @@
         android:theme="@style/Theme.App.SplashScreen"
         tools:targetApi="31">
         <activity
-            android:name="Interfaces.History"
+            android:name="Interfaces.History.History"
             android:exported="false"
             android:theme="@style/Theme.NoNequi">
             <meta-data
@@ -29,7 +29,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="Interfaces.SendMoney"
+            android:name="Interfaces.SendMoney.SendMoney"
             android:exported="false"
             android:theme="@style/Theme.NoNequi">
             <meta-data
@@ -37,7 +37,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="Interfaces.Home"
+            android:name="Interfaces.Home.Home"
             android:exported="false"
             android:theme="@style/Theme.NoNequi">
             <meta-data

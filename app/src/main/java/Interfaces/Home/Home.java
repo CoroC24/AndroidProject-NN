@@ -1,4 +1,4 @@
-package Interfaces;
+package Interfaces.Home;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,12 +12,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.nonequi.DBConnection;
-import com.example.nonequi.ExitAlertDialog;
 import com.example.nonequi.R;
 import com.example.nonequi.databinding.ActivityHomeBinding;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.Snackbar;
 
+import Interfaces.History.History;
+import Interfaces.SendMoney.SendMoney;
+import Interfaces.ShowCard;
 import Login.Welcome;
 import saveInSharedPreferences.KeepNumberManagement;
 import saveInSharedPreferences.sessionManagement;

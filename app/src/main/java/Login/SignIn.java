@@ -14,7 +14,7 @@ import com.example.nonequi.R;
 import com.example.nonequi.databinding.ActivitySignInBinding;
 import com.google.android.material.snackbar.Snackbar;
 
-import Interfaces.Home;
+import Interfaces.Home.Home;
 import saveInSharedPreferences.KeepNumberManagement;
 import kotlin.collections.ArraysKt;
 import saveInSharedPreferences.sessionManagement;

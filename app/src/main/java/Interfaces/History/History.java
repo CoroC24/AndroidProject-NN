@@ -1,4 +1,4 @@
-package Interfaces;
+package Interfaces.History;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.nonequi.DBConnection;
-import com.example.nonequi.HistoryTransactionList;
-import com.example.nonequi.HistoryTransactionListAdapter;
 import com.example.nonequi.R;
 import com.google.android.material.appbar.MaterialToolbar;
 

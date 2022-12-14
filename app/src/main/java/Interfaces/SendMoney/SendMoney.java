@@ -1,4 +1,4 @@
-package Interfaces;
+package Interfaces.SendMoney;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -15,7 +15,7 @@ import com.example.nonequi.databinding.ActivitySendMoneyBinding;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.Snackbar;
 
-import Login.Users;
+import com.example.nonequi.Users;
 import kotlin.collections.ArraysKt;
 
 public class SendMoney extends AppCompatActivity {

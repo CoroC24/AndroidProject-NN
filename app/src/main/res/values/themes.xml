@@ -11,13 +11,14 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/toolBarColor</item>
+        <item name="statusBarForeground">@color/black</item>
         <!-- Customize your theme here. -->
     </style>
 
     <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/backgroundColor</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/logo_splash</item>
-        <item name="windowSplashScreenAnimationDuration">200</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
         <item name="postSplashScreenTheme">@style/Theme.NoNequi</item>
         <item name="android:windowSplashScreenBrandingImage" tools:targetApi="s">@drawable/branded_image</item>
     </style>

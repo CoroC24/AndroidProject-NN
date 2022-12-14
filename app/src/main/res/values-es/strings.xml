@@ -63,4 +63,6 @@
     <string name="by">De</string>
     <string name="for_text">Para</string>
     <string name="your_number">Este es tú número. No puedes enviarte dinero a ti mismo</string>
+    <string name="many_money">No creo que tengas tanto dinero</string>
+    <string name="send_cero">¿Quieres enviar 0$?</string>
 </resources>

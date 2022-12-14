@@ -62,4 +62,6 @@
     <string name="by">By</string>
     <string name="for_text">For</string>
     <string name="your_number">This is your number. You cannot send money to yourself</string>
+    <string name="many_money">I don´t think you have that much money</string>
+    <string name="send_cero">Do you want to send 0$?</string>
 </resources>

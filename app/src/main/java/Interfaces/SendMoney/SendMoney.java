@@ -133,6 +133,16 @@ public class SendMoney extends AppCompatActivity {
             binding.InputMoneyToSendSM.setError("Field cannot be empty");
             return false;
 
+        } else if(money.startsWith("0")) {
+            Snackbar.make(findViewById(android.R.id.content), R.string.send_cero, Snackbar.LENGTH_SHORT).show();
+            binding.InputMoneyToSendSM.setError("Do you want to send 0$?");
+            return false;
+
+        } else if(money.length() > 9) {
+            Snackbar.make(findViewById(android.R.id.content), R.string.many_money, Snackbar.LENGTH_SHORT).show();
+            binding.InputMoneyToSendSM.setError("Do you have that much money?");
+            return false;
+
         } else if(!checkMoneyAvailable()) {
             return false;
         }else {

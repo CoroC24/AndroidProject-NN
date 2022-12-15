@@ -21,7 +21,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="Interfaces.ShowCard"
+            android:name="Interfaces.ShowCard.ShowCard"
             android:exported="false"
             android:theme="@style/Theme.NoNequi">
             <meta-data

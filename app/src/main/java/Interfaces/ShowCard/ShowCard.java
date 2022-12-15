@@ -1,13 +1,11 @@
-package Interfaces;
+package Interfaces.ShowCard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.nonequi.CardCredentials;
 import com.example.nonequi.DBConnection;
 import com.example.nonequi.databinding.ActivityShowCardBinding;
 import com.google.android.material.appbar.MaterialToolbar;

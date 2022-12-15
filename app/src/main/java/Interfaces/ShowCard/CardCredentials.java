@@ -1,4 +1,4 @@
-package com.example.nonequi;
+package Interfaces.ShowCard;
 
 public class CardCredentials {
     public String number;

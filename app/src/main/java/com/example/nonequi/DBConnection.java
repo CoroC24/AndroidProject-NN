@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import Interfaces.ShowCard.CardCredentials;
+
 public class DBConnection extends SQLiteOpenHelper {
 
     public static final String DBName = "nonequi.db";

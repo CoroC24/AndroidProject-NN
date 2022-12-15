@@ -51,7 +51,7 @@ public class HistoryTransactionListAdapter extends RecyclerView.Adapter<HistoryT
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageTransactionIncoming;
-        TextView name, money, by_for;
+        TextView name, money, by_for, date;
         CardView cardView;
 
         ViewHolder(View itemView) {
@@ -62,11 +62,13 @@ public class HistoryTransactionListAdapter extends RecyclerView.Adapter<HistoryT
             money = itemView.findViewById(R.id.textViewMoneyHistory);
             by_for = itemView.findViewById(R.id.textViewBy);
             cardView = itemView.findViewById(R.id.cardView);
+            date = itemView.findViewById(R.id.textViewDate);
         }
 
         void bindData(final HistoryTransactionList item) {
             name.setText(item.getNameSender());
             money.setText(item.getMoneyHTL());
+            date.setText(item.getDate());
 
             if(Objects.equals(item.getNameSender(), DBConnection.users.getName())) {
                 CardView.LayoutParams layoutParams = new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.WRAP_CONTENT);

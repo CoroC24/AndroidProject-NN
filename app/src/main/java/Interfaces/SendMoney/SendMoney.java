@@ -129,6 +129,7 @@ public class SendMoney extends AppCompatActivity {
 
     private boolean moneyCorrect() {
         String money = moneyToSend.getText().toString();
+        //int moneyInt = Integer.parseInt(money);
 
         if(money.isEmpty()) {
             binding.InputMoneyToSendSM.setError("Field cannot be empty");
@@ -139,7 +140,12 @@ public class SendMoney extends AppCompatActivity {
             binding.InputMoneyToSendSM.setError("Do you want to send 0$?");
             return false;
 
-        } else if(money.length() > 9) {
+        } /*else if(moneyInt < 3000) {
+            Snackbar.make(findViewById(android.R.id.content), R.string.minimum_transaction, Snackbar.LENGTH_SHORT).show();
+            binding.InputMoneyToSendSM.setError("Minimum transaction: 3000$");
+            return false;
+
+        }*/ else if(money.length() > 9) {
             Snackbar.make(findViewById(android.R.id.content), R.string.many_money, Snackbar.LENGTH_SHORT).show();
             binding.InputMoneyToSendSM.setError("Do you have that much money?");
             return false;
@@ -173,7 +179,7 @@ public class SendMoney extends AppCompatActivity {
             String moneyOfPersonToTransaction = DBConnection.users.getMoneyTransaction();
             int moneyOPTT = Integer.parseInt(moneyOfPersonToTransaction);
 
-            int addMoneyOfTransaction = moneyOPTT + moneyInt;
+            int addMoneyOfTransaction = moneyOPTT + (moneyInt - 2000);
 
             Boolean consult = DB.setRemainingMoney(remainingMoney);
             Boolean consult2 = DB.setIncomingMoney(addMoneyOfTransaction);

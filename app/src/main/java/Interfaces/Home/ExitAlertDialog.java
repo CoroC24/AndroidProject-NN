@@ -11,7 +11,6 @@ import androidx.fragment.app.DialogFragment;
 import com.example.nonequi.R;
 
 public class ExitAlertDialog extends DialogFragment {
-    AppCompatActivity appCompatActivity;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -20,7 +19,7 @@ public class ExitAlertDialog extends DialogFragment {
         builder.setMessage(R.string.confirm_exit).setPositiveButton(R.string.confirm_dialog, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                appCompatActivity.finishAffinity();
+                System.exit(0);
             }
         }).setNegativeButton(R.string.cancel_dialog, new DialogInterface.OnClickListener() {
 

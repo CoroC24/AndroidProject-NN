@@ -24,7 +24,7 @@ public class DBConnection extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table users(number INT primary key, username TEXT , password TEXT, email TEXT, money INT)");
-        db.execSQL("create table history(numberSender INT, sender TEXT, numberReceiver INT, receiver TEXT, money INT, date DATETIME DEFAULT CURRENT_TIMESTAMP)");
+        db.execSQL("create table history(numberSender INT, sender TEXT, numberReceiver INT, receiver TEXT, money INT, date DATE DEFAULT CURRENT_TIMESTAMP)");
         db.execSQL("create table creditCard(number INT, name TEXT, serial INT, cvc INT, month INT, year INT)");
     }
 

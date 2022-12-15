@@ -1,4 +1,4 @@
-package Login;
+package Interfaces.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.util.PatternsCompat;
@@ -198,6 +198,7 @@ public class signUp extends AppCompatActivity {
             binding.InputPhoneNumberSP.setError("Please enter a valid phone number");
             return false;
         } else {
+            binding.InputPhoneNumberSP.setError(null);
             return true;
         }
     }

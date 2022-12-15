@@ -1,4 +1,4 @@
-package Login;
+package Interfaces.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +15,8 @@ import com.example.nonequi.databinding.ActivitySignInBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 import Interfaces.Home.Home;
+import Interfaces.Login.Welcome;
+import Interfaces.Login.signUp;
 import saveInSharedPreferences.KeepNumberManagement;
 import kotlin.collections.ArraysKt;
 import saveInSharedPreferences.sessionManagement;

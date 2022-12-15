@@ -45,7 +45,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="Login.signUp"
+            android:name="Interfaces.Login.signUp"
             android:exported="false"
             android:theme="@style/Theme.NoNequi">
             <meta-data
@@ -53,7 +53,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="Login.SignIn"
+            android:name="Interfaces.Login.SignIn"
             android:exported="false"
             android:theme="@style/Theme.NoNequi">
             <meta-data
@@ -61,7 +61,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="Login.Welcome"
+            android:name="Interfaces.Login.Welcome"
             android:exported="true"
             android:theme="@style/Theme.NoNequi">
             <intent-filter>

@@ -20,7 +20,8 @@ import com.google.android.material.snackbar.Snackbar;
 import Interfaces.History.History;
 import Interfaces.SendMoney.SendMoney;
 import Interfaces.ShowCard.ShowCard;
-import Login.Welcome;
+import Interfaces.Login.Welcome;
+import Interfaces.Login.Welcome;
 import saveInSharedPreferences.KeepNumberManagement;
 import saveInSharedPreferences.sessionManagement;
 

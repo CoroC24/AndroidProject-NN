@@ -14,7 +14,7 @@ public class DBConnection extends SQLiteOpenHelper {
     public static Users users = new Users();
     public static CardCredentials cardCredentials = new CardCredentials();
 //    public static HistoryTransactionList history = new HistoryTransactionList();
-    public final int moneyTemp = 0;
+    public final int moneyTemp = 1000000;
 
 
     public DBConnection(Context context)     {

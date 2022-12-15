@@ -122,6 +122,7 @@ public class SendMoney extends AppCompatActivity {
             binding.InputMoneyToSendSM.setError("Insufficient money");
             return false;
         } else {
+            binding.InputMoneyToSendSM.setError(null);
             return true;
         }
     }
@@ -146,6 +147,7 @@ public class SendMoney extends AppCompatActivity {
         } else if(!checkMoneyAvailable()) {
             return false;
         }else {
+            binding.InputMoneyToSendSM.setError(null);
             return true;
         }
     }

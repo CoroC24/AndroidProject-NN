@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/backgroundColorDark"
-    tools:context="Login.SignIn"
+    tools:context="Interfaces.Login.SignIn"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout

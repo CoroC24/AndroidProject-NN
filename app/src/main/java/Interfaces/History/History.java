@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.nonequi.DBConnection;
 import com.example.nonequi.R;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +55,7 @@ public class History extends AppCompatActivity {
 
         Cursor cursor = DB.retrieveDataToHistory();
         if(cursor.getCount() == 0) {
-            Toast.makeText(this, "Data not found", Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.history_empty, Snackbar.LENGTH_SHORT).show();
         } else {
             while(cursor.moveToNext()) {
                 String numberSender = cursor.getString(0);

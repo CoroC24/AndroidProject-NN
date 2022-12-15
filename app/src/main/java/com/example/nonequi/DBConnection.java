@@ -10,6 +10,7 @@ public class DBConnection extends SQLiteOpenHelper {
 
     public static final String DBName = "nonequi.db";
     public static Users users = new Users();
+    public static CardCredentials cardCredentials = new CardCredentials();
 //    public static HistoryTransactionList history = new HistoryTransactionList();
     public final int moneyTemp = 0;
 
@@ -22,13 +23,18 @@ public class DBConnection extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table users(number INT primary key, username TEXT , password TEXT, email TEXT, money INT)");
         db.execSQL("create table history(numberSender INT, sender TEXT, numberReceiver INT, receiver TEXT, money INT, date DATETIME DEFAULT CURRENT_TIMESTAMP)");
+        db.execSQL("create table creditCard(number INT, name TEXT, serial INT, cvc INT, month INT, year INT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("drop table if exists users");
         db.execSQL("drop table if exists history");
+        db.execSQL("drop table if exists creditCard");
     }
+
+
+    //Methods to insert data into database
 
     public boolean insertData(String number,String username, String password, String email) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -58,8 +64,24 @@ public class DBConnection extends SQLiteOpenHelper {
         db.insert("history", null, values);
     }
 
-    public boolean checkIfEmailExists(String email) {
+    public void insertDataCreditCard(String number, String name, String serial, String cvc, String month, String year) {
         SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("number", number);
+        values.put("name", name);
+        values.put("serial", serial);
+        values.put("cvc", cvc);
+        values.put("month", month);
+        values.put("year", year);
+
+        db.insert("creditCard", null, values);
+    }
+
+    //Methods to check credentials
+
+    public boolean checkIfEmailExists(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM users where email = ?", new String[]{email});
 
         if(cursor.getCount() > 0) return true;
@@ -68,7 +90,7 @@ public class DBConnection extends SQLiteOpenHelper {
     }
 
     public boolean checkIfNumberExists(String number) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM users where number = ?", new String[]{number});
 
         if(cursor.getCount() > 0) return true;
@@ -76,12 +98,22 @@ public class DBConnection extends SQLiteOpenHelper {
     }
 
     public boolean checkUserPassword(String number, String password) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM users where number = ? and password = ? ", new String[]{number, password});
 
         if(cursor.getCount() > 0) return true;
         else return false;
     }
+
+    public boolean checkIfUserHaveCreditCard(String number) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM creditCard where number = ?", new String[]{number});
+
+        if(cursor.getCount() > 0) return true;
+        else return false;
+    }
+
+    //Methods to retrieve data
 
     public void retrieveData(String number) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -100,14 +132,6 @@ public class DBConnection extends SQLiteOpenHelper {
         cursor.close();
     }
 
-    public boolean setRemainingMoney(int money) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("UPDATE users SET money = '"+ money +"' where number = ?", new String[]{users.getNumber()});
-
-        if(cursor.isAfterLast()) return true;
-        else return false;
-    }
-
     public void retrieveDataTransaction(String number) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT username, money FROM users where number = ?", new String[]{number});
@@ -121,6 +145,31 @@ public class DBConnection extends SQLiteOpenHelper {
         }
 
         cursor.close();
+    }
+
+
+    public void retrieveDataOfCreditCard(String number) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM creditCard where number = ?", new String[]{number});
+
+        if(cursor.moveToFirst()) {
+            cardCredentials.setNumber(cursor.getString(0));
+            cardCredentials.setName(cursor.getString(1));
+            cardCredentials.setSerial(cursor.getString(2));
+            cardCredentials.setCvc(cursor.getString(3));
+            cardCredentials.setMonth(cursor.getString(4));
+            cardCredentials.setYear(cursor.getString(5));
+        }
+    }
+
+    //Methods to set data of transactions
+
+    public boolean setRemainingMoney(int money) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("UPDATE users SET money = '"+ money +"' where number = ?", new String[]{users.getNumber()});
+
+        if(cursor.isAfterLast()) return true;
+        else return false;
     }
 
     public boolean setIncomingMoney(int money) {

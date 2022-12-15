@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="Interfaces.ShowCard">
+    tools:context="Interfaces.ShowCard"
+    android:background="@color/backgroundColorDark">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayoutSC"
@@ -21,8 +22,10 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/toolBarColor"
             app:navigationIcon="@drawable/arrow_back"
+            app:navigationIconTint="#B8B8B8"
             app:title="@string/nonequi_card"
-            app:titleTextColor="#4C4C4C" />
+            app:titleTextColor="#E1E1E1"
+            android:backgroundTint="@color/toolBarColorDark"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

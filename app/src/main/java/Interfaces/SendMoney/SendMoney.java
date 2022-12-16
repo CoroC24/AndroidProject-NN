@@ -157,7 +157,6 @@ public class SendMoney extends AppCompatActivity {
         }
     }
 
-
     private int moneyStringToInt() {
         String money = moneyToSend.getText().toString();
 

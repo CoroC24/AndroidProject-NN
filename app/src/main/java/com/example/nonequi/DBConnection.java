@@ -191,4 +191,13 @@ public class DBConnection extends SQLiteOpenHelper {
 
         return cursor;
     }
+
+    //Method to update money every 24 hours
+
+    public void updateMoney() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("UPDATE users SET money = 1000000 where number > ?", new String[]{"1"});
+
+        cursor.close();
+    }
 }

@@ -66,5 +66,5 @@
     <string name="many_money">No creo que tengas tanto dinero</string>
     <string name="send_cero">¿Quieres enviar 0$?</string>
     <string name="history_empty">El historial está vacío</string>
-    <string name="minimum_transaction">Transacción minima: 3000$</string>
+    <string name="minimum_transaction">Transacción minima: 2500$</string>
 </resources>

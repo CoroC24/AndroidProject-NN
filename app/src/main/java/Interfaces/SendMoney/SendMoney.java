@@ -129,7 +129,6 @@ public class SendMoney extends AppCompatActivity {
 
     private boolean moneyCorrect() {
         String money = moneyToSend.getText().toString();
-        //int moneyInt = Integer.parseInt(money);
 
         if(money.isEmpty()) {
             binding.InputMoneyToSendSM.setError("Field cannot be empty");
@@ -140,12 +139,12 @@ public class SendMoney extends AppCompatActivity {
             binding.InputMoneyToSendSM.setError("Do you want to send 0$?");
             return false;
 
-        } /*else if(moneyInt < 3000) {
+        } else if(moneyStringToInt() < 2500) {
             Snackbar.make(findViewById(android.R.id.content), R.string.minimum_transaction, Snackbar.LENGTH_SHORT).show();
-            binding.InputMoneyToSendSM.setError("Minimum transaction: 3000$");
+            binding.InputMoneyToSendSM.setError("Minimum transaction: 2500");
             return false;
 
-        }*/ else if(money.length() > 9) {
+        } else if(money.length() > 9) {
             Snackbar.make(findViewById(android.R.id.content), R.string.many_money, Snackbar.LENGTH_SHORT).show();
             binding.InputMoneyToSendSM.setError("Do you have that much money?");
             return false;
@@ -156,6 +155,18 @@ public class SendMoney extends AppCompatActivity {
             binding.InputMoneyToSendSM.setError(null);
             return true;
         }
+    }
+
+
+    private int moneyStringToInt() {
+        String money = moneyToSend.getText().toString();
+
+        int moneyInt = 0;
+
+        if (!money.isEmpty()) {
+            moneyInt = Integer.parseInt(money);
+        }
+        return moneyInt;
     }
 
     private boolean validateData() {
@@ -190,6 +201,7 @@ public class SendMoney extends AppCompatActivity {
                 DB.insertDataHistory(DBConnection.users.getNumber(), DBConnection.users.getName(), DBConnection.users.getNumberToReceiver(), DBConnection.users.getNameToReceiver(), money);
                 DB.retrieveData(DBConnection.users.getNumber());
                 textViewMoney.setText(DBConnection.users.getMoney());
+
             } else {
                 Toast.makeText(SendMoney.this, R.string.transaction_failed, Toast.LENGTH_SHORT).show();
             }

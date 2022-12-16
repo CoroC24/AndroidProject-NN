@@ -65,5 +65,5 @@
     <string name="many_money">I don´t think you have that much money</string>
     <string name="send_cero">Do you want to send 0$?</string>
     <string name="history_empty">History is empty</string>
-    <string name="minimum_transaction">Minimun Transaction: 3000$</string>
+    <string name="minimum_transaction">Minimun Transaction: 2500$</string>
 </resources>

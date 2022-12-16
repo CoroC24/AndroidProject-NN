@@ -15,8 +15,6 @@ import com.example.nonequi.databinding.ActivitySignInBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 import Interfaces.Home.Home;
-import Interfaces.Login.Welcome;
-import Interfaces.Login.signUp;
 import saveInSharedPreferences.KeepNumberManagement;
 import kotlin.collections.ArraysKt;
 import saveInSharedPreferences.sessionManagement;
@@ -120,6 +118,7 @@ public class SignIn extends AppCompatActivity {
         Boolean checkPassCorrect = DB.checkUserPassword(number, pass);
 
         if(pass.isEmpty()) {
+            Snackbar.make(findViewById(android.R.id.content), R.string.field_empty, Snackbar.LENGTH_SHORT).show();
             binding.InputPassword.setError("Field cannot be empty");
             return false;
 
@@ -142,6 +141,7 @@ public class SignIn extends AppCompatActivity {
         //Boolean checkUserExists = DB.checkIfUserExists(user);
 
         if(number.isEmpty()) {
+            Snackbar.make(findViewById(android.R.id.content), R.string.field_empty, Snackbar.LENGTH_SHORT).show();
             binding.InputPhoneNumber.setError("Field cannot be empty");
             return false;
 

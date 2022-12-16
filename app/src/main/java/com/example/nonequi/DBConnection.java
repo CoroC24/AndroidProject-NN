@@ -5,7 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
+import android.widget.Toast;
 
+import java.time.LocalDate;
+
+import Interfaces.Home.Home;
 import Interfaces.ShowCard.CardCredentials;
 
 public class DBConnection extends SQLiteOpenHelper {
@@ -13,6 +18,7 @@ public class DBConnection extends SQLiteOpenHelper {
     public static final String DBName = "nonequi.db";
     public static Users users = new Users();
     public static CardCredentials cardCredentials = new CardCredentials();
+    public static UpdateMoney updateMoney = new UpdateMoney();
 //    public static HistoryTransactionList history = new HistoryTransactionList();
     public final int moneyTemp = 1000000;
 
@@ -23,8 +29,8 @@ public class DBConnection extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table users(number INT primary key, username TEXT , password TEXT, email TEXT, money INT)");
-        db.execSQL("create table history(numberSender INT, sender TEXT, numberReceiver INT, receiver TEXT, money INT, date DATE DEFAULT CURRENT_TIMESTAMP)");
+        db.execSQL("create table users(number INT primary key, username TEXT , password TEXT, email TEXT, money INT, date DATE)");
+        db.execSQL("create table history(numberSender INT, sender TEXT, numberReceiver INT, receiver TEXT, money INT, date DATE)");
         db.execSQL("create table creditCard(number INT, name TEXT, serial INT, cvc INT, month INT, year INT)");
     }
 
@@ -38,7 +44,7 @@ public class DBConnection extends SQLiteOpenHelper {
 
     //Methods to insert data into database
 
-    public boolean insertData(String number,String username, String password, String email) {
+    public boolean insertData(String number,String username, String password, String email, String date) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -47,13 +53,14 @@ public class DBConnection extends SQLiteOpenHelper {
         values.put("password", password);
         values.put("email", email);
         values.put("money", moneyTemp);
+        values.put("date", date);
 
         long result = db.insert("users", null, values);
         if(result == -1) return false;
         else return true;
     }
 
-    public void insertDataHistory(String numberSender, String sender, String numberReceiver, String receiver, String money) {
+    public void insertDataHistory(String numberSender, String sender, String numberReceiver, String receiver, String money, String date) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -62,6 +69,7 @@ public class DBConnection extends SQLiteOpenHelper {
         values.put("numberReceiver", numberReceiver);
         values.put("receiver", receiver);
         values.put("money", money);
+        values.put("date", date);
 
         db.insert("history", null, values);
     }
@@ -192,12 +200,24 @@ public class DBConnection extends SQLiteOpenHelper {
         return cursor;
     }
 
-    //Method to update money every 24 hours
+    //Methods to update money every 24 hours
+
+    public void retrieveDate(String number) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =  db.
+                rawQuery("SELECT date FROM users where number = ?", new String[]{number});
+
+        if(cursor.moveToFirst()) {
+            updateMoney.setDateDB(cursor.getString(0));
+        }
+    }
 
     public void updateMoney() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("UPDATE users SET money = 1000000 where number > ?", new String[]{"1"});
+        ContentValues values = new ContentValues();
 
-        cursor.close();
+        values.put("money", moneyTemp);
+
+        db.update("users", values, "number=?", new String[]{users.getNumber()});
     }
 }

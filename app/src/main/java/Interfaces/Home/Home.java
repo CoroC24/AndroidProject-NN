@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nonequi.DBConnection;
 import com.example.nonequi.R;
@@ -17,10 +18,14 @@ import com.example.nonequi.databinding.ActivityHomeBinding;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.text.ParseException;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import Interfaces.History.History;
 import Interfaces.SendMoney.SendMoney;
 import Interfaces.ShowCard.ShowCard;
-import Interfaces.Login.Welcome;
 import Interfaces.Login.Welcome;
 import saveInSharedPreferences.KeepNumberManagement;
 import saveInSharedPreferences.sessionManagement;
@@ -53,6 +58,8 @@ public class Home extends AppCompatActivity {
         textViewName = binding.textViewName;
         textViewMoney = binding.textViewMoney;
 
+
+
         MaterialToolbar toolBar = binding.topAppBar;
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,14 +83,6 @@ public class Home extends AppCompatActivity {
                 return false;
             }
         });
-
-        String retrieveNumber = keepNumber.getNumberManagement();
-
-        DB.retrieveData(retrieveNumber);
-
-        textViewName.setText(DBConnection.users.getName());
-        textViewMoney.setText(DBConnection.users.getMoney());
-
 
         //Set actions to buttons
 
@@ -121,6 +120,25 @@ public class Home extends AppCompatActivity {
     }
 
 
+    protected void onStart() {
+        super.onStart();
+
+        String retrieveNumber = keepNumber.getNumberManagement();
+
+        DB.retrieveDate(retrieveNumber);
+        DB.retrieveData(retrieveNumber);
+
+        try {
+            setMoneyToUser();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        textViewName.setText(DBConnection.users.getName());
+        textViewMoney.setText(DBConnection.users.getMoney());
+    }
+
     //Method to give action to back button
 
     @Override
@@ -145,5 +163,32 @@ public class Home extends AppCompatActivity {
         super.onPostResume();
         DB.retrieveData(DBConnection.users.getNumber());
         textViewMoney.setText(DBConnection.users.getMoney());
+    }
+
+    //Method to update money
+
+    public void setMoneyToUser() throws ParseException {
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+            LocalDate localDate = LocalDate.now();
+
+            String dateDBString = DBConnection.updateMoney.getDateDB();
+            LocalDate dateDB = LocalDate.parse(dateDBString, dateFormat);
+
+            Duration diff = Duration.between(localDate.atStartOfDay(), dateDB.atStartOfDay());
+
+            long diffHours = diff.toHours();
+
+            int diffHoursInt = (int)(diffHours);
+
+            diffHoursInt *= -1;
+
+            if (diffHoursInt >= 24) {
+                DB.updateMoney();
+            }
+        }
     }
 }

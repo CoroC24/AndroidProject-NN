@@ -16,6 +16,11 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.Snackbar;
 
 import com.example.nonequi.Users;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+
 import kotlin.collections.ArraysKt;
 
 public class SendMoney extends AppCompatActivity {
@@ -23,6 +28,7 @@ public class SendMoney extends AppCompatActivity {
     private ActivitySendMoneyBinding binding;
     private TextView textViewMoney;
     public EditText phoneNumber, moneyToSend;
+    public String date;
 
     DBConnection DB;
     Users users;
@@ -62,6 +68,10 @@ public class SendMoney extends AppCompatActivity {
                 }
             }
         });
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        date = sdf.format(calendar.getTime());
     }
 
     //Method to give action to back button
@@ -141,7 +151,7 @@ public class SendMoney extends AppCompatActivity {
 
         } else if(moneyStringToInt() < 2500) {
             Snackbar.make(findViewById(android.R.id.content), R.string.minimum_transaction, Snackbar.LENGTH_SHORT).show();
-            binding.InputMoneyToSendSM.setError("Minimum transaction: 2500");
+            binding.InputMoneyToSendSM.setError("Minimum transaction: 2500$");
             return false;
 
         } else if(money.length() > 9) {
@@ -197,7 +207,7 @@ public class SendMoney extends AppCompatActivity {
             if(consult == true && consult2 == true) {
                 Toast.makeText(SendMoney.this, R.string.transaction_success, Toast.LENGTH_SHORT).show();
 
-                DB.insertDataHistory(DBConnection.users.getNumber(), DBConnection.users.getName(), DBConnection.users.getNumberToReceiver(), DBConnection.users.getNameToReceiver(), money);
+                DB.insertDataHistory(DBConnection.users.getNumber(), DBConnection.users.getName(), DBConnection.users.getNumberToReceiver(), DBConnection.users.getNameToReceiver(), money, date);
                 DB.retrieveData(DBConnection.users.getNumber());
                 textViewMoney.setText(DBConnection.users.getMoney());
 

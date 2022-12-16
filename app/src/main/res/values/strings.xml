@@ -66,4 +66,5 @@
     <string name="send_cero">Do you want to send 0$?</string>
     <string name="history_empty">History is empty</string>
     <string name="minimum_transaction">Minimun Transaction: 2500$</string>
+    <string name="user_length">"Name must be contain minimum 8 characters "</string>
 </resources>

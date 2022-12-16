@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.regex.Pattern;
 
 import com.example.nonequi.DBConnection;
@@ -24,6 +27,7 @@ public class signUp extends AppCompatActivity {
     private ActivitySignUpBinding binding;
     private EditText phoneNumber, username, password, rpassword, email;
     private TextView clickableText;
+    public String date;
 
     DBConnection DB;
     saveInSharedPreferences.sessionManagement sessionManagement;
@@ -55,6 +59,10 @@ public class signUp extends AppCompatActivity {
             }
         });
 
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        date = sdf.format(calendar.getTime());
+
         binding.signUpButtonSP.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -68,7 +76,7 @@ public class signUp extends AppCompatActivity {
 
                  if(validateData()) {
                     if(pass.equals(rpass)) {
-                        Boolean insert = DB.insertData(number, user, pass, mail);
+                        Boolean insert = DB.insertData(number, user, pass, mail, date);
 
                         if(insert == true) {
                             Toast.makeText(signUp.this, R.string.register_successfully, Toast.LENGTH_SHORT).show();
@@ -114,6 +122,7 @@ public class signUp extends AppCompatActivity {
         Boolean checkEmailExists = DB.checkIfEmailExists(mail);
 
         if (mail.isEmpty()) {
+            Snackbar.make(findViewById(android.R.id.content), R.string.field_empty, Snackbar.LENGTH_SHORT).show();
             binding.InputEmailSP.setError("Field cannot be empty");
             return false;
 
@@ -140,6 +149,7 @@ public class signUp extends AppCompatActivity {
         Pattern passRegex = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_,.:!¡?¿<>])(?=\\S+$).{8,}$");
 
         if(pass.isEmpty()) {
+            Snackbar.make(findViewById(android.R.id.content), R.string.field_empty, Snackbar.LENGTH_SHORT).show();
             binding.InputPasswordSP.setError("Field cannot be empty");
             return false;
 
@@ -160,10 +170,12 @@ public class signUp extends AppCompatActivity {
         Pattern userRegex = Pattern.compile("^.{8,}$");
 
         if(user.isEmpty()) {
+            Snackbar.make(findViewById(android.R.id.content), R.string.field_empty, Snackbar.LENGTH_SHORT).show();
             binding.InputUserNameSP.setError("Field cannot be empty");
             return false;
 
         } else if(!userRegex.matcher(user).matches()) {
+            Snackbar.make(findViewById(android.R.id.content), R.string.user_length, Snackbar.LENGTH_SHORT).show();
             userRegex();
             binding.InputUserNameSP.setError("Please enter a valid name");
             return false;
@@ -185,6 +197,7 @@ public class signUp extends AppCompatActivity {
         Boolean checkNumberExists = DB.checkIfNumberExists(number);
 
         if(number.isEmpty()) {
+            Snackbar.make(findViewById(android.R.id.content), R.string.field_empty, Snackbar.LENGTH_SHORT).show();
             binding.InputPhoneNumberSP.setError("Field cannot be empty");
             return false;
 

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.nonequi.DBConnection;
 import com.example.nonequi.R;
+import com.example.nonequi.databinding.ActivityHomeBinding;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.Snackbar;
 

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.nonequi.DBConnection;
 import com.example.nonequi.R;
+import com.example.nonequi.databinding.ActivitySignInBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 import Views.Home.Home;

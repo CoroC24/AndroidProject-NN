@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.nonequi.DBConnection;
 import com.example.nonequi.R;
+import com.example.nonequi.databinding.ActivitySendMoneyBinding;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.Snackbar;
 

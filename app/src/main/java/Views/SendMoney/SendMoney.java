@@ -1,4 +1,4 @@
-package Interfaces.SendMoney;
+package Views.SendMoney;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -11,14 +11,12 @@ import android.widget.Toast;
 
 import com.example.nonequi.DBConnection;
 import com.example.nonequi.R;
-import com.example.nonequi.databinding.ActivitySendMoneyBinding;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.Snackbar;
 
 import com.example.nonequi.Users;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
 
 import kotlin.collections.ArraysKt;

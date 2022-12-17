@@ -1,4 +1,4 @@
-package Interfaces.ShowCard;
+package Views.ShowCard;
 
 public class CardCredentials {
     public String number;

@@ -1,4 +1,4 @@
-package Interfaces.ShowCard;
+package Views.ShowCard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.nonequi.DBConnection;
-import com.example.nonequi.databinding.ActivityShowCardBinding;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import java.time.*;

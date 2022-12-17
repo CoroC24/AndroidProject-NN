@@ -1,4 +1,4 @@
-package Interfaces.History;
+package Views.History;
 
 public class HistoryTransactionList {
 

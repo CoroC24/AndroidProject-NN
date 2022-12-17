@@ -1,4 +1,4 @@
-package Interfaces.Login;
+package Views.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,10 +11,9 @@ import android.widget.Toast;
 
 import com.example.nonequi.DBConnection;
 import com.example.nonequi.R;
-import com.example.nonequi.databinding.ActivitySignInBinding;
 import com.google.android.material.snackbar.Snackbar;
 
-import Interfaces.Home.Home;
+import Views.Home.Home;
 import saveInSharedPreferences.KeepNumberManagement;
 import kotlin.collections.ArraysKt;
 import saveInSharedPreferences.sessionManagement;

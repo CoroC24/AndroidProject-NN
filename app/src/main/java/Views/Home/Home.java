@@ -1,4 +1,4 @@
-package Interfaces.Home;
+package Views.Home;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -10,11 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nonequi.DBConnection;
 import com.example.nonequi.R;
-import com.example.nonequi.databinding.ActivityHomeBinding;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -23,10 +21,10 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import Interfaces.History.History;
-import Interfaces.SendMoney.SendMoney;
-import Interfaces.ShowCard.ShowCard;
-import Interfaces.Login.Welcome;
+import Views.History.History;
+import Views.SendMoney.SendMoney;
+import Views.ShowCard.ShowCard;
+import Views.Login.Welcome;
 import saveInSharedPreferences.KeepNumberManagement;
 import saveInSharedPreferences.sessionManagement;
 

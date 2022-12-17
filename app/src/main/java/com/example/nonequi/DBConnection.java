@@ -5,13 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Build;
-import android.widget.Toast;
 
-import java.time.LocalDate;
-
-import Interfaces.Home.Home;
-import Interfaces.ShowCard.CardCredentials;
+import Views.ShowCard.CardCredentials;
 
 public class DBConnection extends SQLiteOpenHelper {
 

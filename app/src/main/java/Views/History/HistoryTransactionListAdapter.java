@@ -1,4 +1,4 @@
-package Interfaces.History;
+package Views.History;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.nonequi.DBConnection;
 import com.example.nonequi.R;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 

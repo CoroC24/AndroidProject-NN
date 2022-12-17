@@ -13,7 +13,7 @@
         android:theme="@style/Theme.App.SplashScreen"
         tools:targetApi="31">
         <activity
-            android:name="Interfaces.History.History"
+            android:name="Views.History.History"
             android:exported="false"
             android:theme="@style/Theme.NoNequi">
             <meta-data
@@ -21,7 +21,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="Interfaces.ShowCard.ShowCard"
+            android:name="Views.ShowCard.ShowCard"
             android:exported="false"
             android:theme="@style/Theme.NoNequi">
             <meta-data
@@ -29,7 +29,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="Interfaces.SendMoney.SendMoney"
+            android:name="Views.SendMoney.SendMoney"
             android:exported="false"
             android:theme="@style/Theme.NoNequi">
             <meta-data
@@ -37,7 +37,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="Interfaces.Home.Home"
+            android:name="Views.Home.Home"
             android:exported="false"
             android:theme="@style/Theme.NoNequi">
             <meta-data
@@ -45,7 +45,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="Interfaces.Login.signUp"
+            android:name="Views.Login.signUp"
             android:exported="false"
             android:theme="@style/Theme.NoNequi">
             <meta-data
@@ -53,7 +53,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="Interfaces.Login.SignIn"
+            android:name="Views.Login.SignIn"
             android:exported="false"
             android:theme="@style/Theme.NoNequi">
             <meta-data
@@ -61,7 +61,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="Interfaces.Login.Welcome"
+            android:name="Views.Login.Welcome"
             android:exported="true"
             android:theme="@style/Theme.NoNequi">
             <intent-filter>

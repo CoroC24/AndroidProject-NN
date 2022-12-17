@@ -1,4 +1,4 @@
-package Interfaces.Login;
+package Views.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.util.PatternsCompat;
@@ -16,7 +16,6 @@ import java.util.regex.Pattern;
 
 import com.example.nonequi.DBConnection;
 import com.example.nonequi.R;
-import com.example.nonequi.databinding.ActivitySignUpBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 import kotlin.collections.ArraysKt;

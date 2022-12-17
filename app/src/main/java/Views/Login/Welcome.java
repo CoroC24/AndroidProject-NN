@@ -1,4 +1,4 @@
-package Interfaces.Login;
+package Views.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,8 +15,7 @@ import androidx.core.splashscreen.SplashScreen;
 
 import com.example.nonequi.R;
 
-import Interfaces.Home.Home;
-import Interfaces.Login.signUp;
+import Views.Home.Home;
 import saveInSharedPreferences.sessionManagement;
 
 

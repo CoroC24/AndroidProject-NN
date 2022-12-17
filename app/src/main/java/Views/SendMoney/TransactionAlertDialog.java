@@ -1,4 +1,4 @@
-package Interfaces.SendMoney;
+package Views.SendMoney;
 
 import android.app.Dialog;
 import android.content.DialogInterface;

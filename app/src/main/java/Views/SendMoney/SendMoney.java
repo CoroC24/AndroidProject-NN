@@ -193,12 +193,13 @@ public class SendMoney extends AppCompatActivity {
         int moneyDBInt = Integer.parseInt(moneyDB);
 
         if(checkMoneyAvailable() == true) {
-            int remainingMoney = moneyDBInt - moneyInt;
+            int remainingMoney = (moneyDBInt - moneyInt) - 2000;
 
             String moneyOfPersonToTransaction = DBConnection.users.getMoneyTransaction();
             int moneyOPTT = Integer.parseInt(moneyOfPersonToTransaction);
 
-            int addMoneyOfTransaction = moneyOPTT + (moneyInt - 2000);
+            //The variable moneyOPTT is a abbreviation of Money of person to transaction
+            int addMoneyOfTransaction = moneyOPTT + moneyInt;
 
             Boolean consult = DB.setRemainingMoney(remainingMoney);
             Boolean consult2 = DB.setIncomingMoney(addMoneyOfTransaction);
